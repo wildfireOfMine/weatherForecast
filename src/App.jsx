@@ -5,7 +5,7 @@ import { Navbar } from "./route/Navbar"
 import Home from "./views/Home"
 import Results from "./views/Results"
 import SearchView from "./views/SearchView"
-
+import './i18n';
 
 //BrowserRouter es un componente que engloba a otros componentes
 //se un HOC, es decir, un componente de nivel superior
@@ -25,6 +25,7 @@ export const App = () => {
             <Route path="/" element={<Home/>}/>
             <Route path="/search" element={<SearchView/>}/>
             <Route path="/search/:city" element={<Results/>}/>
+            <Route path="/search/:city?" element={<Results/>}/>
           </Routes>
     </>
   )

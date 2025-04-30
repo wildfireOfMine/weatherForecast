@@ -1,8 +1,10 @@
+import { useTranslation } from "react-i18next";
 import {Link, NavLink} from "react-router-dom"
 
 /************************************************************************************************** */
 
 export const Navbar = () => {
+  const { i18n, t } = useTranslation();
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -14,7 +16,7 @@ export const Navbar = () => {
                   to="/"
                   className={ ({isActive}) => `nav-link ${isActive ? 'active' : ''}`}
               >
-                Home
+                {t('home')}
               </NavLink>
               
               <NavLink 

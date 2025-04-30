@@ -1,10 +1,12 @@
 import React from 'react'
 import SearchBar from '../components/SearchBar'
+import { useTranslation } from 'react-i18next';
 
 const SearchView = () => {
+    const { i18n, t } = useTranslation();
   return (
     <>
-        <h1>Looking for a city? Look no more!</h1>
+        <h1>{t('looking_for_a_city')}</h1>
         <SearchBar/>
     </>
   )
