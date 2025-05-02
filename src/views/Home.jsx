@@ -5,13 +5,16 @@ import SearchBar from '../components/SearchBar';
 import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import ImageCarrousel from '../components/ImageCarrousel';
+import { Box } from '@mui/material';
 
 const Home = () => {
     const { i18n, t } = useTranslation();
   
   return (
     <>
+      <Box sx={{ position: "absolute", zIndex: "999"}}>
         <h1>{t('weather_app')}</h1>
+      </Box>
         <ImageCarrousel/>
         <h2>Welcome! This is a Weather Forecast app, powered 
           by the API <a href='https://www.visualcrossing.com/' target='_blank'>Visual Crossing</a>. This is a task 
