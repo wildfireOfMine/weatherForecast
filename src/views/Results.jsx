@@ -47,17 +47,17 @@ const Results = () => {
             <h1>{data.resolvedAddress}</h1>
             <h2><q>{data.description}</q></h2> 
 {/*             <p>{JSON.stringify(data)}</p> */}            
-            <div>
+            <div className='map'>
                <LinkMap lat={data.latitude} lng={data.longitude}/>
             </div>
             <div>
-                <ul>
+                <ul className='alerts'>
                     {alerts.map((alert, index) => {
                         return <li key={index}>{alert.event}</li>
                     })}
                 </ul>
             </div>
-            <div>
+            <div className='generalConditions'>
                 <ul>
                     <li>{conditions.cloudcover}</li>
                     <li>{conditions.conditions}</li>
@@ -77,7 +77,7 @@ const Results = () => {
                     <li>{conditions.sunset}</li>
                 </ul>
             </div>
-            <div>
+            <div className='daysGraphic'>
                 <ul>
                 {days.map((day, index) => {
                     return <li key={index}>{day.conditions}</li>

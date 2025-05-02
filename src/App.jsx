@@ -8,12 +8,8 @@ import './i18n';
 export const App = () => {
   return (
     <>
-          <h1>App</h1>
           <Navbar/>
           
-
-          <hr/>
-
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/search" element={<SearchView/>}/>
