@@ -4,6 +4,7 @@ import Home from "./views/Home"
 import Results from "./views/Results"
 import SearchView from "./views/SearchView"
 import './i18n';
+import NotFound from "./views/NotFound"
 
 export const App = () => {
   return (
@@ -14,6 +15,7 @@ export const App = () => {
             <Route path="/" element={<Home/>}/>
             <Route path="/search" element={<SearchView/>}/>
             <Route path="/search/:city" element={<Results/>}/>
+            <Route path="*" element={<NotFound/>}/>
           </Routes>
     </>
   )
