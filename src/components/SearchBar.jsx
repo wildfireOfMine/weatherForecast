@@ -11,9 +11,11 @@ const SearchBar = () => {
         setSearch(e.target.value);
     }
 
-    const handleButton = () => {
+    const handleButton = (e) => {
+        e.preventDefault();
         navigate(`/search/${search}`)
     }
+    
   return (
     <div>
       <form>
