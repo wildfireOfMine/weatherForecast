@@ -1,9 +1,21 @@
 html, body {
-    margin: 0; /* Elimina márgenes por defecto */
-    padding: 0; /* Elimina padding por defecto */
-    width: 100%; /* Asegura que el body y html ocupen todo el ancho de la pantalla */
-    position: relative; /* Necesario para que top y left funcionen */
-  }
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: relative;
+    font-size: 16px;
+}
+
+a {
+  font-style: normal;
+  color: black;
+  text-decoration: none;
+}
+
+a:hover{
+  color: grey;
+}
+
   
 body {
     position: relative; 

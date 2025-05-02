@@ -17,17 +17,19 @@ export const Navbar = () => {
 
   return (
     <Box sx={{ flexGrow: 1, width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-      <AppBar position="static" sx={{ justifyContent: 'space-around' }}>
-        <Toolbar sx={{ justifyContent: 'space-evenly' }}>
-            <div>
+      <AppBar position="static" sx={{ justifyContent: 'space-around', backgroundColor: 'white' }}>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
+            <Box sx={{ width: "10%", display: "flex", alignItems: "center", fontSize: "1.3em" }}>
+              <Cloud sx={{ color: 'black' }}/>
               <NavLink to="/">
-                <Cloud/>
-                  Weather Forecast aPP
+                Weather Forecast aPP
               </NavLink>
-            </div>
+            </Box>
+
+
             <SearchBar/>
 
-            <div>
+            <Box sx={{ width: "20%", display: "flex", justifyContent: "space-evenly", alignItems: "center", fontSize: "1.4em"}}>
               <NavLink 
                 to="/"
                 className={ ({isActive}) => `nav-link ${isActive ? 'active' : ''}`}
@@ -50,7 +52,7 @@ export const Navbar = () => {
                 <MenuItem value="en" onClick={()=>i18n.changeLanguage("en")}>EN</MenuItem>
                 <MenuItem value="es" onClick={()=>i18n.changeLanguage("es")}>ES</MenuItem>
               </Select>
-            </div>
+            </Box>
           </Toolbar>
         </AppBar>
     </Box>
