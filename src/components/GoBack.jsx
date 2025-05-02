@@ -6,7 +6,7 @@ const GoBack = () => {
   const navigate = useNavigate();
 
   const handleButton = () => {
-    navigate(-2);
+    navigate(-1);
   }
   return (
     <div>
