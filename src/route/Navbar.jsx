@@ -16,7 +16,7 @@ export const Navbar = () => {
   }
 
   return (
-    <Box sx={{ flexGrow: 1, width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <Box className="header" sx={{ flexGrow: 1, width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <AppBar position="static" sx={{ justifyContent: 'space-around', backgroundColor: 'white' }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
             <Box sx={{ width: "10%", display: "flex", alignItems: "center", fontSize: "1.3em" }}>

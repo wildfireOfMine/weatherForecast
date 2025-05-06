@@ -24,9 +24,9 @@ const Footer = () => {
         <h1>{clockCET}</h1>
         <h1><q>First, solve the problem. Then, write the code.</q></h1>
         <List sx={{ fontSize: "3em" }}>
-            <LinkedIn fontSize='inherit'/>
-            <GitHub fontSize='inherit'/>
-            <Email fontSize='inherit'/>
+            <a href="https://www.linkedin.com/in/iv%C3%A1n-anguera-moya-981b86319/"><LinkedIn fontSize='inherit'/></a>
+            <a href="https://github.com/wildfireOfMine"><GitHub fontSize='inherit'/></a>
+            <a href='mailto:iamtheanguera@gmail.com'><Email fontSize='inherit'/></a>
         </List>
     </Box>
   )
