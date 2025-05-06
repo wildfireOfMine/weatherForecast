@@ -30,7 +30,7 @@ const ImageCarrousel = () => {
   const picture = imgsArray[indicators]
 
   return (
-    <Box sx={{ width: "100%", height: "100%", position: 'relative' }}>
+    <Box sx={{ width: "100%", height: "100%", position: 'relative', maxHeight: "650px" }}>
         <a href={picture.credits} key={indicators} target='_blank'>
           <img key={indicators} src={picture.image} name={picture.name} style={{ 
             width: "100%", height: "100%", maxHeight: "600px", objectFit: "cover" }}/>
