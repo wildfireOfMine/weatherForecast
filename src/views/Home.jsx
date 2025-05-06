@@ -6,6 +6,7 @@ import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import ImageCarrousel from '../components/ImageCarrousel';
 import { Box } from '@mui/material';
+import Footer from '../components/Footer';
 
 const Home = () => {
     const { i18n, t } = useTranslation();
@@ -24,6 +25,7 @@ const Home = () => {
 
         <h2>{t('looking')}</h2>
         <SearchBar/>
+        <Footer/>
     </>
   )
 }

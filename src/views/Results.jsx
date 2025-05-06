@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import GoBack from '../components/GoBack';
 import LinkMap from '../components/LinkMap';
+import Footer from '../components/Footer';
+import BasicExample from '../components/Spinner';
+import Spinner from '../components/Spinner';
 
 const Results = () => {
     const API_KEY = import.meta.env.VITE_API_KEY;
@@ -38,7 +41,7 @@ const Results = () => {
 
     return (
     <>
-        { loading ? <h1>Loading...</h1> 
+        { loading ? <Spinner/>
 
         : error ? <h1>Oops!</h1> 
 
@@ -87,6 +90,7 @@ const Results = () => {
         </>
         }
         <GoBack/>
+        <Footer/>
     </>
   )
 }
