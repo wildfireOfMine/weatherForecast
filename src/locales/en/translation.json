@@ -1,5 +1,6 @@
 {
     "home":"Home",
+    "search":"Search",
     "looking_for_a_city":"Looking for a city? Look no more!",
     "weather_app":"Weather Climate App",
     "welcome":"Welcome! This is a Weather Forecast app, powered by the API <a href='https://www.visualcrossing.com/' target='_blank'>Visual Crossing</a>. This is a task inside the <a href='https://www.theodinproject.com/' target='_blank'>The Odin Project</a> course. If speaking strictly, this should have been done in JavaScript, but, I thought it would be far funnier to keep improving my knowledgement in React MUI!",
