@@ -15,14 +15,63 @@ const Home = () => {
   return (
     <>
         <ImageCarrousel/>
-        <h2>Welcome! This is a Weather Forecast app, powered 
-          by the API <a href='https://www.visualcrossing.com/' target='_blank'>Visual Crossing</a>. This is a task 
-          inside the <a href='https://www.theodinproject.com/' target='_blank'>The Odin Project</a> course. If speaking strictly, 
-          this should have been done in JavaScript, 
-        but, I thought it would be far funnier to keep improving my knowledgement in React MUI!</h2>
-
-        <h2>{t('looking')}</h2>
-        <SearchBar/>
+          <Box sx={{
+            position: 'relative',
+            backgroundImage: 'url(../../imgs/Prague.jpg)',
+            width: '100%',
+            height: '100%',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <Box sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'black',
+                opacity: 0.4,
+                zIndex: 998,
+              }}/>
+              <h2>Welcome! This is a Weather Forecast app, powered 
+              by the API <a href='https://www.visualcrossing.com/' target='_blank'>Visual Crossing</a>. This is a task 
+              inside the <a href='https://www.theodinproject.com/' target='_blank'>The Odin Project</a> course. If speaking strictly, 
+              this should have been done in JavaScript, 
+              but, I thought it would be far funnier to keep improving my knowledgement in React MUI!</h2>
+          </Box>
+          <Box sx={{
+            position: 'relative',
+            backgroundImage: 'url(../../imgs/Clouds.jpg)',
+            width: '100%',
+            height: '100%',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <Box sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'black',
+                opacity: 0.4,
+                zIndex: 998,
+              }}/>
+              <Box sx={{zIndex: 999}}>
+                <h2>{t('looking')}</h2>
+                <SearchBar/>
+              </Box>
+          </Box>
+        
+        
         <Footer/>
     </>
   )

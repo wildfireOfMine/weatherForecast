@@ -2,13 +2,40 @@ import React from 'react'
 import SearchBar from '../components/SearchBar'
 import { useTranslation } from 'react-i18next';
 import Footer from '../components/Footer';
+import { Box } from '@mui/material';
 
 const SearchView = () => {
     const { i18n, t } = useTranslation();
   return (
     <>
-        <h1>{t('looking_for_a_city')}</h1>
-        <SearchBar/>
+    <Box sx={{
+            position: 'relative',
+            backgroundImage: 'url(../../imgs/Valencia.jpg)',
+            width: '100%',
+            height: '100%',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <Box sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'black',
+                opacity: 0.4,
+                zIndex: 998,
+              }}/>
+              <Box sx={{zIndex: 999}}>
+                <h1>{t('looking_for_a_city')}</h1>
+                <SearchBar/>
+              </Box>
+        </Box>
         <Footer/>
     </>
   )
