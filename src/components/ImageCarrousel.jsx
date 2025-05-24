@@ -1,7 +1,8 @@
 import { Image } from '@mui/icons-material'
 import { Box, Button } from '@mui/material'
 import React, { useState } from 'react'
-
+/* import {logo} from ''
+ */
 const ImageCarrousel = () => {
   const [indicators, setIndicators] = useState(0);
 
@@ -31,6 +32,28 @@ const ImageCarrousel = () => {
 
   return (
     <Box sx={{ width: "100%", height: "100%", position: 'relative', maxHeight: "650px" }}>
+        <Box sx={{ 
+            backgroundImage:'url(../../imgs/WeatherForecastText.png)',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            maxHeight: '600px',
+            zIndex: 999
+        }}/>
+        <Box sx={{
+        position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            maxHeight: '600px',
+            backgroundColor: 'black',
+            opacity: 0.4,
+            zIndex: 998,
+        }}/>
         <a href={picture.credits} key={indicators} target='_blank'>
           <img key={indicators} src={picture.image} name={picture.name} style={{ 
             width: "100%", height: "100%", maxHeight: "600px", objectFit: "cover" }}/>

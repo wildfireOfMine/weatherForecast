@@ -35,7 +35,7 @@ const Results = () => {
             setLoading(false)
             console.log(final);
         });
-    }, [])
+    }, [city])
 
     console.log(conditions);
 
