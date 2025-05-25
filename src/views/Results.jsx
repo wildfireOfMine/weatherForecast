@@ -17,6 +17,7 @@ const Results = () => {
     const [alerts, setAlerts] = useState(null);
     const [days, setDays] = useState(null);
     const [conditions, setConditions] = useState(null);
+    const [errorDesc, setErrorDesc] = useState('');
 
     useEffect(() =>{
         fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=us&key=${API_KEY}&contentType=json`, {
@@ -33,6 +34,7 @@ const Results = () => {
         }).catch((err) => {
             console.log(err);
             setError(true);
+            setErrorDesc(err.message || JSON.stringify(err));
         }).finally((final) =>{
             setLoading(false)
             console.log(final);
@@ -42,118 +44,112 @@ const Results = () => {
     console.log(conditions);
 
     return (
-    <>
-        { loading ? <Spinner/>
+    <Box sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        backgroundImage: 'url(../../imgs/Tokyo.jpg)',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        position: 'relative',
+    }}>
 
-        : error ? <h1>Oops!</h1> 
+    <Box sx={{ flexGrow: 1, position: 'relative' }}>
 
-        : 
-        <>
+    {loading ? <Spinner />
+
+    : error ? <h1>Oops! {errorDesc}</h1>
+        
+    :   <>
             <Box sx={{
-                backgroundImage:'url(../../imgs/Tokyo.jpg)',
+                position: 'absolute',
+                top: 0,
+                left: 0,
                 width: '100%',
-                height: '1190px',
-                minHeight: '100vh',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                }}> 
+                height: '90%',
+                backgroundColor: 'black',
+                opacity: 0.4,
+                zIndex: 998,
+            }} />
 
-                <Box sx={{
-                    position: 'absolute',
-                    top: 110,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    backgroundColor: 'black',
-                    opacity: 0.4,
-                    zIndex: 998,
-                }}/>
-
-                    <Box sx={{
-                        margin: '0 40em',
-                        zIndex: 1000,
-                        position: 'relative',
-                        color: 'white',
-                    }}>
-                        <h1>{data.resolvedAddress}</h1>
-                        <h2><q>{data.description}</q></h2>
-                    </Box>
-
-                    <Box className='map' sx={{
-                        position: 'relative',
-                        zIndex: 1000,
-                    }}>
-                        <LinkMap lat={data.latitude} lng={data.longitude}/>
-                    </Box>
-
-                    {alerts.length > 0 && ( 
-                    <Box sx={{
-                        backgroundColor: '#FF474C',
-                        border: '5px solid red',
-                        zIndex: 1000,
-                        position: 'relative',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}>
-                        <Warning sx={{ color: 'yellow', }}/>
-                        <Typography variant="h1">WARNING!</Typography>
-                            <ul className='alerts'>
-                                {alerts.map((alert, index) => {
-                                    return <li key={index}>{alert.event}</li>
-                                })}
-                            </ul>
-                    </Box>
-                    )}
-
-                    <Box className='generalConditions'
-                    sx={{
-                        backgroundColor: 'cyan',
-                        border: '5px solid blue',
-                        position: 'relative',
-                        zIndex: 1000,
-                    }}>
-                        <ul>
-                            <li>{conditions.cloudcover}</li>
-                            <li>{conditions.conditions}</li>
-                            <li>{conditions.datetime}</li>
-                            <li>{conditions.dew}</li>
-                            <li>{conditions.feelslike}</li>
-                            <li>{conditions.humidity}</li>
-                            <li>{conditions.icon}</li>
-                            <li>{conditions.moonphase}</li>
-                            <li>{conditions.precip}</li>
-                            <li>{conditions.pressure}</li>
-                            <li>{conditions.snow}</li>
-                            <li>{conditions.solarenergy}</li>
-                            <li>{conditions.solarradiation}</li>
-                            <li>{conditions.stations}</li>
-                            <li>{conditions.sunrise}</li>
-                            <li>{conditions.sunset}</li>
-                        </ul>
-                    </Box>
-
-                    <Box className='daysGraphic'
-                    sx={{
-                        backgroundColor: 'yellow',
-                        border: '5px solid black',
-                        position: 'relative', 
-                        zIndex: 1000,
-                    }}>
-                        <ul>
-                            {days.map((day, index) => {
-                                return <li key={index}>{day.conditions}</li>
-                            })}
-                        </ul>
-                    </Box>
-
+            <Box sx={{
+                margin: '0 40em',
+                zIndex: 1000,
+                position: 'relative',
+                color: 'white',
+                }}>
+                <h1>{data.resolvedAddress}</h1>
+                <h2><q>{data.description}</q></h2>
             </Box>
-        </>
-        }
-        <GoBack/>
-        <Footer/>
-    </>
+
+                <Box className='map' sx={{ position: 'relative', zIndex: 1000 }}>
+                    <LinkMap lat={data.latitude} lng={data.longitude} />
+                </Box>
+
+            {alerts.length > 0 && (
+                <Box sx={{
+                    backgroundColor: '#FF474C',
+                    border: '5px solid red',
+                    zIndex: 1000,
+                    position: 'relative',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
+                    <Warning sx={{ color: 'yellow' }} />
+                    <Typography variant="h1">WARNING!</Typography>
+                    <ul className='alerts'>
+                        {alerts.map((alert, index) => <li key={index}>{alert.event}</li>)}
+                    </ul>
+                </Box>
+            )}
+
+            <Box className='generalConditions' sx={{
+                backgroundColor: 'cyan',
+                border: '5px solid blue',
+                position: 'relative',
+                zIndex: 1000,
+            }}>
+                <ul>
+                    <li>{conditions.cloudcover}</li>
+                    <li>{conditions.conditions}</li>
+                    <li>{conditions.datetime}</li>
+                    <li>{conditions.dew}</li>
+                    <li>{conditions.feelslike}</li>
+                    <li>{conditions.humidity}</li>
+                    <li>{conditions.icon}</li>
+                    <li>{conditions.moonphase}</li>
+                    <li>{conditions.precip}</li>
+                    <li>{conditions.pressure}</li>
+                    <li>{conditions.snow}</li>
+                    <li>{conditions.solarenergy}</li>
+                    <li>{conditions.solarradiation}</li>
+                    <li>{conditions.stations}</li>
+                    <li>{conditions.sunrise}</li>
+                    <li>{conditions.sunset}</li>
+                </ul>
+            </Box>
+
+                <Box className='daysGraphic' sx={{
+                backgroundColor: 'yellow',
+                border: '5px solid black',
+                position: 'relative',
+                zIndex: 1000,
+                }}>
+                <ul>
+                    {days.map((day, index) => <li key={index}>{day.conditions}</li>)}
+                </ul>
+                </Box>
+            </>
+            }
+        </Box>
+
+        <GoBack />
+        <Footer />
+
+    </Box>
+
   )
 }
 
