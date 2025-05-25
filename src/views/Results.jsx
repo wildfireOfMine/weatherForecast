@@ -58,6 +58,7 @@ const Results = () => {
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
                 }}> 
+
                 <Box sx={{
                     position: 'absolute',
                     top: 110,
@@ -68,6 +69,7 @@ const Results = () => {
                     opacity: 0.4,
                     zIndex: 998,
                 }}/>
+
                     <Box sx={{
                         margin: '0 40em',
                         zIndex: 1000,
@@ -97,11 +99,11 @@ const Results = () => {
                     }}>
                         <Warning sx={{ color: 'yellow', }}/>
                         <Typography >WARNING!</Typography>
-                        <ul className='alerts'>
-                            {alerts.map((alert, index) => {
-                                return <li key={index}>{alert.event}</li>
-                            })}
-                        </ul>
+                            <ul className='alerts'>
+                                {alerts.map((alert, index) => {
+                                    return <li key={index}>{alert.event}</li>
+                                })}
+                            </ul>
                     </Box>
                     )}
 
@@ -140,9 +142,9 @@ const Results = () => {
                         zIndex: 1000,
                     }}>
                         <ul>
-                        {days.map((day, index) => {
-                            return <li key={index}>{day.conditions}</li>
-                        })}
+                            {days.map((day, index) => {
+                                return <li key={index}>{day.conditions}</li>
+                            })}
                         </ul>
                     </Box>
 
