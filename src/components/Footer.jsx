@@ -18,7 +18,7 @@ const Footer = () => {
     }, []);
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-evenly", 
+    <Box className="footer" sx={{ display: "flex", justifyContent: "space-evenly", 
     alignItems: "center", padding: "50px", backgroundColor: "black", color: "white", width: "100%", height: "18%" }}>
         <h1>&copy; Iván</h1>
         <h1>{clockCET}</h1>

@@ -37,11 +37,20 @@ const Home = () => {
                 opacity: 0.4,
                 zIndex: 998,
               }}/>
-              <h2>Welcome! This is a Weather Forecast app, powered 
+              <Typography variant="h2"
+              sx={{
+                position: 'relative',
+                zIndex: 1000,
+                textAlign: 'center',
+                color:"white", 
+                WebkitTextStroke: "2px black",
+                padding: "0 1em",
+                fontSize: "5em",
+              }}>Welcome! This is a Weather Forecast app, powered 
               by the API <a href='https://www.visualcrossing.com/' target='_blank'>Visual Crossing</a>. This is a task 
               inside the <a href='https://www.theodinproject.com/' target='_blank'>The Odin Project</a> course. If speaking strictly, 
               this should have been done in JavaScript, 
-              but, I thought it would be far funnier to keep improving my knowledgement in React MUI!</h2>
+              but, I thought it would be far funnier to keep improving my knowledgement in React MUI!</Typography>
           </Box>
           <Box sx={{
             position: 'relative',
