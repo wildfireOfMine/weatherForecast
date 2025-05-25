@@ -51,6 +51,7 @@ export const Navbar = () => {
               >
                 <MenuItem value="en" onClick={()=>i18n.changeLanguage("en")}>EN</MenuItem>
                 <MenuItem value="es" onClick={()=>i18n.changeLanguage("es")}>ES</MenuItem>
+                <MenuItem value="it" onClick={()=>i18n.changeLanguage("it")}>IT</MenuItem>
               </Select>
             </Box>
           </Toolbar>
