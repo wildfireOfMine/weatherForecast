@@ -31,7 +31,7 @@ const ImageCarrousel = () => {
   const picture = imgsArray[indicators]
 
   return (
-    <Box sx={{ width: "100%", height: "100%", position: 'relative', maxHeight: "650px" }}>
+    <Box sx={{ width: "100%", height: "100%", position: 'relative', maxHeight: "600px" }}>
         <Box sx={{ 
             backgroundImage:'url(../../imgs/WeatherForecastText.png)',
             backgroundSize: 'contain',
@@ -58,7 +58,7 @@ const ImageCarrousel = () => {
           <img key={indicators} src={picture.image} name={picture.name} style={{ 
             width: "100%", height: "100%", maxHeight: "600px", objectFit: "cover" }}/>
         </a> 
-        <Button onClick={nextPage}>Next</Button>
+        <Button sx={{position:'absolute', zIndex: 1000, bottom: '10%', right: '48%', color:'red'}} onClick={nextPage}>Next</Button>
     </Box>
   )
 }
