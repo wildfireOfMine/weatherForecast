@@ -5,6 +5,8 @@ import LinkMap from '../components/LinkMap';
 import Footer from '../components/Footer';
 import BasicExample from '../components/Spinner';
 import Spinner from '../components/Spinner';
+import { Box, Typography } from '@mui/material';
+import { Warning } from '@mui/icons-material';
 
 const Results = () => {
     const API_KEY = import.meta.env.VITE_API_KEY;
@@ -46,47 +48,105 @@ const Results = () => {
         : error ? <h1>Oops!</h1> 
 
         : 
-        <> 
-            <h1>{data.resolvedAddress}</h1>
-            <h2><q>{data.description}</q></h2> 
-{/*             <p>{JSON.stringify(data)}</p> */}            
-            <div className='map'>
-               <LinkMap lat={data.latitude} lng={data.longitude}/>
-            </div>
-            <div>
-                <ul className='alerts'>
-                    {alerts.map((alert, index) => {
-                        return <li key={index}>{alert.event}</li>
-                    })}
-                </ul>
-            </div>
-            <div className='generalConditions'>
-                <ul>
-                    <li>{conditions.cloudcover}</li>
-                    <li>{conditions.conditions}</li>
-                    <li>{conditions.datetime}</li>
-                    <li>{conditions.dew}</li>
-                    <li>{conditions.feelslike}</li>
-                    <li>{conditions.humidity}</li>
-                    <li>{conditions.icon}</li>
-                    <li>{conditions.moonphase}</li>
-                    <li>{conditions.precip}</li>
-                    <li>{conditions.pressure}</li>
-                    <li>{conditions.snow}</li>
-                    <li>{conditions.solarenergy}</li>
-                    <li>{conditions.solarradiation}</li>
-                    <li>{conditions.stations}</li>
-                    <li>{conditions.sunrise}</li>
-                    <li>{conditions.sunset}</li>
-                </ul>
-            </div>
-            <div className='daysGraphic'>
-                <ul>
-                {days.map((day, index) => {
-                    return <li key={index}>{day.conditions}</li>
-                })}
-                </ul>
-            </div>
+        <>
+            <Box sx={{
+                backgroundImage:'url(../../imgs/Tokyo.jpg)',
+                width: '100%',
+                height: '1190px',
+                minHeight: '100vh',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                }}> 
+                <Box sx={{
+                    position: 'absolute',
+                    top: 110,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'black',
+                    opacity: 0.4,
+                    zIndex: 998,
+                }}/>
+                    <Box sx={{
+                        margin: '0 40em',
+                        zIndex: 1000,
+                        position: 'relative',
+                        color: 'white',
+                    }}>
+                        <h1>{data.resolvedAddress}</h1>
+                        <h2><q>{data.description}</q></h2>
+                    </Box>
+
+                    <Box className='map' sx={{
+                        position: 'relative',
+                        zIndex: 1000,
+                    }}>
+                        <LinkMap lat={data.latitude} lng={data.longitude}/>
+                    </Box>
+
+                    {alerts.length > 0 && ( 
+                    <Box sx={{
+                        backgroundColor: '#FF474C',
+                        border: '5px solid red',
+                        zIndex: 1000,
+                        position: 'relative',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
+                        <Warning sx={{ color: 'yellow', }}/>
+                        <Typography >WARNING!</Typography>
+                        <ul className='alerts'>
+                            {alerts.map((alert, index) => {
+                                return <li key={index}>{alert.event}</li>
+                            })}
+                        </ul>
+                    </Box>
+                    )}
+
+                    <Box className='generalConditions'
+                    sx={{
+                        backgroundColor: 'cyan',
+                        border: '5px solid blue',
+                        position: 'relative',
+                        zIndex: 1000,
+                    }}>
+                        <ul>
+                            <li>{conditions.cloudcover}</li>
+                            <li>{conditions.conditions}</li>
+                            <li>{conditions.datetime}</li>
+                            <li>{conditions.dew}</li>
+                            <li>{conditions.feelslike}</li>
+                            <li>{conditions.humidity}</li>
+                            <li>{conditions.icon}</li>
+                            <li>{conditions.moonphase}</li>
+                            <li>{conditions.precip}</li>
+                            <li>{conditions.pressure}</li>
+                            <li>{conditions.snow}</li>
+                            <li>{conditions.solarenergy}</li>
+                            <li>{conditions.solarradiation}</li>
+                            <li>{conditions.stations}</li>
+                            <li>{conditions.sunrise}</li>
+                            <li>{conditions.sunset}</li>
+                        </ul>
+                    </Box>
+
+                    <Box className='daysGraphic'
+                    sx={{
+                        backgroundColor: 'yellow',
+                        border: '5px solid black',
+                        position: 'relative', 
+                        zIndex: 1000,
+                    }}>
+                        <ul>
+                        {days.map((day, index) => {
+                            return <li key={index}>{day.conditions}</li>
+                        })}
+                        </ul>
+                    </Box>
+
+            </Box>
         </>
         }
         <GoBack/>
