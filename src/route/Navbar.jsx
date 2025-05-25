@@ -27,7 +27,7 @@ export const Navbar = () => {
             </Box>
 
 
-            <SearchBar/>
+            <SearchBar size="small" colour="black"  fillColour="black"  />
 
             <Box sx={{ width: "20%", display: "flex", justifyContent: "space-evenly", alignItems: "center", fontSize: "1.4em"}}>
               <NavLink 

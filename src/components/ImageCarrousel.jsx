@@ -58,7 +58,7 @@ const ImageCarrousel = () => {
           <img key={indicators} src={picture.image} name={picture.name} style={{ 
             width: "100%", height: "100%", maxHeight: "600px", objectFit: "cover" }}/>
         </a> 
-        <Button sx={{position:'absolute', zIndex: 1000, bottom: '10%', right: '48%', color:'red'}} onClick={nextPage}>Next</Button>
+        <Button sx={{position:'absolute', zIndex: 1000, bottom: '10%', right: '48%', color:'white'}} onClick={nextPage}>Next</Button>
     </Box>
   )
 }

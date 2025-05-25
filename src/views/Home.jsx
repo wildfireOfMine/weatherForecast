@@ -5,7 +5,7 @@ import SearchBar from '../components/SearchBar';
 import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import ImageCarrousel from '../components/ImageCarrousel';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Footer from '../components/Footer';
 import Logo from '../components/Logo';
 
@@ -66,8 +66,10 @@ const Home = () => {
                 zIndex: 998,
               }}/>
               <Box sx={{zIndex: 999}}>
-                <h2>{t('looking')}</h2>
-                <SearchBar/>
+                <Typography variant='h1' sx={{
+                  textAlign:"center", color:"white", WebkitTextStroke: "2px black",
+                }}>{t('looking')}</Typography>
+                <SearchBar size="big"/>
               </Box>
           </Box>
         

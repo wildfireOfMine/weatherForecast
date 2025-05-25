@@ -98,7 +98,7 @@ const Results = () => {
                         alignItems: 'center',
                     }}>
                         <Warning sx={{ color: 'yellow', }}/>
-                        <Typography >WARNING!</Typography>
+                        <Typography variant="h1">WARNING!</Typography>
                             <ul className='alerts'>
                                 {alerts.map((alert, index) => {
                                     return <li key={index}>{alert.event}</li>

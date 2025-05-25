@@ -2,7 +2,7 @@ import React from 'react'
 import SearchBar from '../components/SearchBar'
 import { useTranslation } from 'react-i18next';
 import Footer from '../components/Footer';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 const SearchView = () => {
     const { i18n, t } = useTranslation();
@@ -32,7 +32,10 @@ const SearchView = () => {
                 zIndex: 998,
               }}/>
               <Box sx={{zIndex: 999}}>
-                <h1>{t('looking_for_a_city')}</h1>
+                <Typography variant="h1" sx={{
+                  WebkitTextStroke: "2px black",
+                  color: "white",
+                }}>{t('looking_for_a_city')}</Typography>
                 <SearchBar/>
               </Box>
         </Box>
