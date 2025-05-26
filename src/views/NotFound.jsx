@@ -1,8 +1,11 @@
 import React from 'react'
 import Footer from '../components/Footer'
 import { Box, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next';
 
 const NotFound = () => {
+  const { i18n, t } = useTranslation();
+
   return (
     <>
       <Box sx={{
@@ -34,14 +37,14 @@ const NotFound = () => {
             color:"white", 
             WebkitTextStroke: "2px black",
             fontSize: '10em',
-          }}>Page not found</Typography>
+          }}>{t("page_not_found")}</Typography>
           <Typography variant='h2' sx={{
             position:'relative',
             zIndex:999,
             color:"white", 
             WebkitTextStroke: "2px black",
             fontSize: '7em',
-          }}>Where are you?</Typography>
+          }}>{t("where_are_you")}</Typography>
       </Box>
       <Footer/>
     </>

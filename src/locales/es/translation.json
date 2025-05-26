@@ -1,8 +1,21 @@
 {
-    "home":"Inicio",
+    "enter_a_city_name":"Escribe el nombre de una ciudad",
+    "search_inside_bar":"Busca...",
+    "home":"Casa",
     "search":"Buscar",
+
+    "next":"Siguiente",
+
+    "home_desc1":"¡Bienvenido! Esta es una aplicación climatológica potenciada por la API de ",
+    "home_desc2":" Esta tarea es parte del curso de ",
+    "home_desc3":". Si se hablara estrictamente, esta tarea debería haber sido hecha en JavaScript, pero, ¡pensé que era más lúdico seguir mejorando mi conocimiento en React MUI!",
     "looking_for_a_city":"¿Buscas una ciudad?, ¡no busques más!",
     "weather_app":"Aplicación Climatológica",
     "welcome":"Welcome! This is a Weather Forecast app, powered by the API <a href='https://www.visualcrossing.com/' target='_blank'>Visual Crossing</a>. This is a task inside the <a href='https://www.theodinproject.com/' target='_blank'>The Odin Project</a> course. If speaking strictly, this should have been done in JavaScript, but, I thought it would be far funnier to keep improving my knowledgement in React MUI!",
-    "looking":"¿Buscas una ciudad?"
+    "looking":"¿Buscas una ciudad?",
+
+    "page_not_found":"Página no encontrada",
+    "where_are_you":"¿Dónde estás?",
+
+    "first_solve_the_problem":"Primero, resuelve el problema. Luego, prográmalo."
 }

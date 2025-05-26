@@ -46,11 +46,9 @@ const Home = () => {
                 WebkitTextStroke: "2px black",
                 padding: "0 1em",
                 fontSize: "5em",
-              }}>Welcome! This is a Weather Forecast app, powered 
-              by the API <a href='https://www.visualcrossing.com/' target='_blank'>Visual Crossing</a>. This is a task 
-              inside the <a href='https://www.theodinproject.com/' target='_blank'>The Odin Project</a> course. If speaking strictly, 
-              this should have been done in JavaScript, 
-              but, I thought it would be far funnier to keep improving my knowledgement in React MUI!</Typography>
+              }}>{t('home_desc1')}<a href='https://www.visualcrossing.com/' target='_blank'>Visual Crossing</a>. 
+               {t('home_desc2')}<a href='https://www.theodinproject.com/' target='_blank'>The Odin Project</a> 
+               {t('home_desc3')}</Typography>
           </Box>
           <Box sx={{
             position: 'relative',

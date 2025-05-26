@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { Box, IconButton, TextField } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 
 const SearchBar = ({size="small", colour="white", width="0.6em", fillColour="white"}) => {
+    const { i18n, t } = useTranslation();
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
 
@@ -28,11 +30,11 @@ const SearchBar = ({size="small", colour="white", width="0.6em", fillColour="whi
         <TextField
         id="search-bar"
         className="text"
-        label="Enter a city name"
+        label={t("enter_a_city_name")}
         value={search}
         onChange={handleSearch}
         variant="outlined"
-        placeholder="Search..."
+        placeholder={t("search_inside_bar")}
         size={size}
         onKeyDown={(e)=>{
           e.key === "Enter" && handleButton(e);

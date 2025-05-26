@@ -1,8 +1,10 @@
 import { Email, GitHub, LinkedIn, Report } from '@mui/icons-material'
 import { Box, List } from '@mui/material'
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+    const { i18n, t } = useTranslation();
     const [clockCET, setClockCET] = useState("");
 
     useEffect(() => {
@@ -29,7 +31,7 @@ const Footer = () => {
     }}>
         <h1>&copy; Iván</h1>
         <h1>{clockCET}</h1>
-        <h1><q>First, solve the problem. Then, write the code.</q></h1>
+        <h1><q>{t("first_solve_the_problem")}</q></h1>
         <List sx={{ fontSize: "3em" }}>
             <a href="https://www.linkedin.com/in/iv%C3%A1n-anguera-moya-981b86319/"><LinkedIn fontSize='inherit'/></a>
             <a href="https://github.com/wildfireOfMine"><GitHub fontSize='inherit'/></a>
