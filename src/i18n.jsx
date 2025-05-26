@@ -5,6 +5,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import i18n from 'i18next';
 import * as common_en from '../src/locales/en/translation.json'
 import * as common_es from '../src/locales/es/translation.json'
+import * as common_cat from '../src/locales/cat/translation.json'
+import * as common_pr from '../src/locales/pr/translation.json'
 import * as common_it from '../src/locales/it/translation.json'
 
 
@@ -13,7 +15,7 @@ i18n.use(XHR)
   .use(HttpApi)
   .use(initReactI18next)
   .init({
-    supportedLngs: ['en', 'es', 'it'],
+    supportedLngs: ['en', 'es', 'cat', 'pr', 'it'],
     fallbackLng: 'es',
     detection: {
         order: ['cookie', 'localStorage', 'htmlTag', 'path', 'subdomain'],
@@ -30,6 +32,12 @@ i18n.use(XHR)
       },
       en: {
         translation: common_en,
+      },
+      cat: {
+        translation: common_cat,
+      },
+      pr: {
+        translation: common_pr,
       },
       it: {
         translation: common_it

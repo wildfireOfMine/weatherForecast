@@ -1,0 +1,20 @@
+{
+    "enter_a_city_name":"Escriu el nom d'una ciutat",
+    "search_inside_bar":"Cerca...",
+    "home":"Inici",
+    "search":"Cercar",
+
+    "next":"Següent",
+
+    "home_desc1":"Benvingut! Això és una aplicació climatològica, potenciada amb l'API ",
+    "home_desc2":" Això és una tasca adins del curs d'en ",
+    "home_desc3":" Si parléssim rigurosament, això deuria ésser fet amb JavaScript, però, he pensat que continuar practicant el meu coneixement amb React MUI pot ser més divertit!",
+    "looking_for_a_city":"Busques una ciutat? Som-hi!",
+    "weather_app":"Weather Climate App",
+    "looking":"Busques una ciutat?",
+
+    "page_not_found":"Pàgina no trovada",
+    "where_are_you":"On ets?",
+
+    "first_solve_the_problem":"First, solve the problem. Then, write the code."
+}
