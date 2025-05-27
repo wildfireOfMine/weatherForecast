@@ -5,8 +5,8 @@ import LinkMap from '../components/LinkMap';
 import Footer from '../components/Footer';
 import BasicExample from '../components/Spinner';
 import Spinner from '../components/Spinner';
-import { Box, Typography } from '@mui/material';
-import { Warning } from '@mui/icons-material';
+import { Box, Rating, Typography } from '@mui/material';
+import { AccessTime, Brightness1, Brightness2, Brightness4, Brightness5, Brightness7, Cloud, DarkMode, DewPoint, LockClock, ScatterPlot, Snowboarding, Snowing, Sunny, TempleHinduRounded, Train, Visibility, Warning, Water, Waves } from '@mui/icons-material';
 
 const Results = () => {
     const API_KEY = import.meta.env.VITE_API_KEY;
@@ -27,8 +27,10 @@ const Results = () => {
             return result.json()
         }).then((response)=>{
             console.log(response);
+            console.log(response.days);
             setData(response);
             setAlerts(response.alerts);
+            
             setDays(response.days);
             setConditions(response.currentConditions)
         }).catch((err) => {
@@ -67,20 +69,22 @@ const Results = () => {
                 top: 0,
                 left: 0,
                 width: '100%',
-                height: '90%',
+                height: '105%',
                 backgroundColor: 'black',
                 opacity: 0.4,
                 zIndex: 998,
             }} />
 
             <Box sx={{
-                margin: '0 40em',
+                margin: '2em auto',
                 zIndex: 1000,
                 position: 'relative',
                 color: 'white',
+                WebkitTextStroke: "1px black",
+                maxWidth: '50%',
                 }}>
-                <h1>{data.resolvedAddress}</h1>
-                <h2><q>{data.description}</q></h2>
+                <Typography variant='h2'>{data.resolvedAddress}</Typography>
+                <Typography variant='h3'><q>{data.description}</q></Typography>
             </Box>
 
                 <Box className='map' sx={{ position: 'relative', zIndex: 1000 }}>
@@ -94,58 +98,88 @@ const Results = () => {
                     zIndex: 1000,
                     position: 'relative',
                     display: 'flex',
-                    justifyContent: 'center',
+                    justifyContent: 'space-evenly',
                     alignItems: 'center',
+                    maxWidth: '50%',
+                    maxHeight: 500,
+                    height: '24vh',
+                    margin: '2em auto',
                 }}>
-                    <Warning sx={{ color: 'yellow' }} />
-                    <Typography variant="h1">WARNING!</Typography>
-                    <ul className='alerts'>
-                        {alerts.map((alert, index) => <li key={index}>{alert.event}</li>)}
-                    </ul>
+                    <Box sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
+                        <Warning sx={{ color: 'yellow', fontSize: '6em', '& path': {stroke: 'black',strokeWidth: 1,} }} />
+                        <Typography variant="h1">WARNING!</Typography>
+                    </Box>
+                    <Box sx={{
+                        margin: '0 1em',
+                    }}>
+                        <ul className='alerts'>
+                            {alerts.map((alert, index) => <li key={index}>{alert.event}</li>)}
+                        </ul>
+                    </Box>
                 </Box>
             )}
 
             <Box className='generalConditions' sx={{
+                maxWidth: '70%',
                 backgroundColor: 'cyan',
                 border: '5px solid blue',
                 position: 'relative',
                 zIndex: 1000,
+                margin: '2em auto',
+                padding: '1em 2em',
             }}>
+                <Typography variant="h1">General Conditions</Typography>
                 <ul>
-                    <li>{conditions.cloudcover}</li>
-                    <li>{conditions.conditions}</li>
-                    <li>{conditions.datetime}</li>
-                    <li>{conditions.dew}</li>
-                    <li>{conditions.feelslike}</li>
-                    <li>{conditions.humidity}</li>
-                    <li>{conditions.icon}</li>
-                    <li>{conditions.moonphase}</li>
-                    <li>{conditions.precip}</li>
-                    <li>{conditions.pressure}</li>
-                    <li>{conditions.snow}</li>
-                    <li>{conditions.solarenergy}</li>
-                    <li>{conditions.solarradiation}</li>
-                    <li>{conditions.stations}</li>
-                    <li>{conditions.sunrise}</li>
-                    <li>{conditions.sunset}</li>
+                    <li>Cloud cover: {conditions.cloudcover} <Cloud sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>Conditions: {conditions.conditions} <TempleHinduRounded sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>Datetime: {conditions.datetime} <AccessTime sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>Dew: {conditions.dew} <DewPoint sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>Feels like: {conditions.feelslike} <Visibility sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>Humidity: {conditions.humidity}  <Waves sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>Icon: {conditions.icon }</li>
+                    <li>Moonphase: {conditions.moonphase} <Brightness2 sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>Precip: {conditions.precip} <ScatterPlot sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>Pressure: {conditions.pressure} <Water sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>Snow: {conditions.snow} <Snowing sx={{ verticalAlign: 'middle' }} /> </li>
+                    <li>Solar energy: {conditions.solarenergy} <Brightness5 sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>Solar radiation: {conditions.solarradiation} <Brightness7 sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>Stations: {conditions.stations} <Train sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>Sunrise: {conditions.sunrise} <Sunny sx={{ verticalAlign: 'middle' }}/></li>
+                    <li>Sunset: {conditions.sunset} <DarkMode sx={{ verticalAlign: 'middle' }}/> </li>
                 </ul>
             </Box>
 
-                <Box className='daysGraphic' sx={{
+            <Box className='daysGraphic' sx={{
                 backgroundColor: 'yellow',
                 border: '5px solid black',
                 position: 'relative',
                 zIndex: 1000,
-                }}>
+                margin: '2em auto',
+                maxWidth: '85%',
+            }}>
                 <ul>
                     {days.map((day, index) => <li key={index}>{day.conditions}</li>)}
                 </ul>
-                </Box>
-            </>
+            </Box>
+        </>
             }
         </Box>
 
+    <Box sx={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'black',
+    padding: '1em',
+    margin: '0 1em',
+    zIndex: 998,
+    }}>
         <GoBack />
+    </Box>
         <Footer />
 
     </Box>
