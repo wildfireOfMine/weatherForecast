@@ -5,7 +5,7 @@ import LinkMap from '../components/LinkMap';
 import Footer from '../components/Footer';
 import BasicExample from '../components/Spinner';
 import Spinner from '../components/Spinner';
-import { Box, Rating, Typography } from '@mui/material';
+import { Box, Grid, Rating, Typography } from '@mui/material';
 import { AccessTime, Brightness1, Brightness2, Brightness4, Brightness5, Brightness7, Cloud, DarkMode, DewPoint, LockClock, ScatterPlot, Snowboarding, Snowing, Sunny, TempleHinduRounded, Train, Visibility, Warning, Water, Waves } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { Line } from 'react-chartjs-2';
@@ -171,39 +171,55 @@ const Results = () => {
             )}
 
             <Box className='generalConditions' sx={{
-                maxWidth: '70%',
-                backgroundColor: 'cyan',
-                border: '5px solid blue',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: 'center',
+                backgroundColor: 'white',
                 position: 'relative',
                 zIndex: 1000,
-                margin: '2em auto',
+                margin: '2em 0',
                 padding: '1em 2em',
+                fontSize: '2em',
             }}>
-                <Typography variant="h1">General Conditions</Typography>
-                <ul>
-                    <li>{t('cloud_cover')}: {conditions.cloudcover} <Cloud sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('conditions')}: {conditions.conditions} <TempleHinduRounded sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('datetime')}: {conditions.datetime} <AccessTime sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('dew')}: {conditions.dew} <DewPoint sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('temp')}: {fahrenheitToCelsius(days[0].temp)}ºC</li>
-                    <li>{t('feels_like')}: {fahrenheitToCelsius(conditions.feelslike)} <Visibility sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('humidity')}: {conditions.humidity}  <Waves sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('icon')}: {conditions.icon}</li>
-                    <li>{t('moonphase')}: {conditions.moonphase} <Brightness2 sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('precip')}: {conditions.precip} <ScatterPlot sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('pressure')}: {conditions.pressure} <Water sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('snow')}: {conditions.snow} <Snowing sx={{ verticalAlign: 'middle' }} /> </li>
-                    <li>{t('solar_energy')}: {conditions.solarenergy} <Brightness5 sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('solar_radiation')}: {conditions.solarradiation} <Brightness7 sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('stations')}: {conditions.stations} <Train sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('sunrise')}: {conditions.sunrise} <Sunny sx={{ verticalAlign: 'middle' }}/></li>
-                    <li>{t('sunset')}: {conditions.sunset} <DarkMode sx={{ verticalAlign: 'middle' }}/> </li>
-                </ul>
+                
+                <Grid container spacing={4} sx={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
+                    <Grid size={12}>
+                        <Typography variant="h1">General Conditions</Typography>
+                    </Grid>
+                    <Grid size={5}>
+                        <li>{t('cloud_cover')}: {conditions.cloudcover} <Cloud sx={{ verticalAlign: 'middle' }}/> </li>
+                        <li>{t('conditions')}: {conditions.conditions} <TempleHinduRounded sx={{ verticalAlign: 'middle' }}/> </li>
+                        <li>{t('datetime')}: {conditions.datetime} <AccessTime sx={{ verticalAlign: 'middle' }}/> </li>
+                        <li>{t('dew')}: {conditions.dew} <DewPoint sx={{ verticalAlign: 'middle' }}/> </li>
+                    </Grid>
+                    <Grid size={5}>
+                        <li>{t('temp')}: {fahrenheitToCelsius(days[0].temp)}ºC</li>
+                        <li>{t('feels_like')}: {fahrenheitToCelsius(conditions.feelslike)} <Visibility sx={{ verticalAlign: 'middle' }}/> </li>
+                        <li>{t('humidity')}: {conditions.humidity}  <Waves sx={{ verticalAlign: 'middle' }}/> </li>
+                        <li>{t('icon')}: {conditions.icon}</li>
+                    </Grid>
+                    <Grid size={5}>
+                        <li>{t('moonphase')}: {conditions.moonphase} <Brightness2 sx={{ verticalAlign: 'middle' }}/> </li>
+                        <li>{t('precip')}: {conditions.precip} <ScatterPlot sx={{ verticalAlign: 'middle' }}/> </li>
+                        <li>{t('pressure')}: {conditions.pressure} <Water sx={{ verticalAlign: 'middle' }}/> </li>
+                        <li>{t('snow')}: {conditions.snow} <Snowing sx={{ verticalAlign: 'middle' }} /> </li>
+                    </Grid>
+                    <Grid size={5}>
+                        <li>{t('solar_energy')}: {conditions.solarenergy} <Brightness5 sx={{ verticalAlign: 'middle' }}/> </li>
+                        <li>{t('solar_radiation')}: {conditions.solarradiation} <Brightness7 sx={{ verticalAlign: 'middle' }}/> </li>
+                        <li>{t('stations')}: {conditions.stations} <Train sx={{ verticalAlign: 'middle' }}/> </li>
+                        <li>{t('sunrise')}: {conditions.sunrise} <Sunny sx={{ verticalAlign: 'middle' }}/></li>
+                        <li>{t('sunset')}: {conditions.sunset} <DarkMode sx={{ verticalAlign: 'middle' }}/> </li>
+                    </Grid>
+                </Grid>
             </Box>
 
             <Box className='daysGraphic' sx={{
                 backgroundColor: 'white',
-                
                 position: 'relative',
                 zIndex: 1000,
                 margin: '2em auto',
