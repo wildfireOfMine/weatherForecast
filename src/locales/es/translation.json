@@ -17,5 +17,22 @@
     "page_not_found":"Página no encontrada",
     "where_are_you":"¿Dónde estás?",
 
+    "cloud_cover":"Capa de nubes",
+    "conditions":"Condiciones",
+    "datetime":"Última Hora en que se Midió",
+    "dew":"Condensación",
+    "feels_like":"Sensación térmica",
+    "humidity":"Humedad",
+    "icon":"Icono",
+    "moonphase":"Fase lunar",
+    "precip":"Precipitaciones",
+    "pressure":"Presión",
+    "snow":"Nieve",
+    "solar_energy":"Energía solar",
+    "solar_radiation":"Radiación solar",
+    "stations":"Estaciones",
+    "sunrise":"Amanecer",
+    "sunset":"Crepúsculo",
+
     "first_solve_the_problem":"Primero, resuelve el problema. Luego, prográmalo."
 }

@@ -7,6 +7,7 @@ import BasicExample from '../components/Spinner';
 import Spinner from '../components/Spinner';
 import { Box, Rating, Typography } from '@mui/material';
 import { AccessTime, Brightness1, Brightness2, Brightness4, Brightness5, Brightness7, Cloud, DarkMode, DewPoint, LockClock, ScatterPlot, Snowboarding, Snowing, Sunny, TempleHinduRounded, Train, Visibility, Warning, Water, Waves } from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
 
 const Results = () => {
     const API_KEY = import.meta.env.VITE_API_KEY;
@@ -18,6 +19,7 @@ const Results = () => {
     const [days, setDays] = useState(null);
     const [conditions, setConditions] = useState(null);
     const [errorDesc, setErrorDesc] = useState('');
+    const { i18n, t } = useTranslation();
 
     useEffect(() =>{
         fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=us&key=${API_KEY}&contentType=json`, {
@@ -134,22 +136,22 @@ const Results = () => {
             }}>
                 <Typography variant="h1">General Conditions</Typography>
                 <ul>
-                    <li>Cloud cover: {conditions.cloudcover} <Cloud sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>Conditions: {conditions.conditions} <TempleHinduRounded sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>Datetime: {conditions.datetime} <AccessTime sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>Dew: {conditions.dew} <DewPoint sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>Feels like: {conditions.feelslike} <Visibility sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>Humidity: {conditions.humidity}  <Waves sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>Icon: {conditions.icon }</li>
-                    <li>Moonphase: {conditions.moonphase} <Brightness2 sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>Precip: {conditions.precip} <ScatterPlot sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>Pressure: {conditions.pressure} <Water sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>Snow: {conditions.snow} <Snowing sx={{ verticalAlign: 'middle' }} /> </li>
-                    <li>Solar energy: {conditions.solarenergy} <Brightness5 sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>Solar radiation: {conditions.solarradiation} <Brightness7 sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>Stations: {conditions.stations} <Train sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>Sunrise: {conditions.sunrise} <Sunny sx={{ verticalAlign: 'middle' }}/></li>
-                    <li>Sunset: {conditions.sunset} <DarkMode sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('cloud_cover')}: {conditions.cloudcover} <Cloud sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('conditions')}: {conditions.conditions} <TempleHinduRounded sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('datetime')}: {conditions.datetime} <AccessTime sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('dew')}: {conditions.dew} <DewPoint sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('feels_like')} {conditions.feelslike} <Visibility sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('humidity')}: {conditions.humidity}  <Waves sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('icon')}: {conditions.icon}</li>
+                    <li>{t('moonphase')}: {conditions.moonphase} <Brightness2 sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('precip')}: {conditions.precip} <ScatterPlot sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('pressure')}: {conditions.pressure} <Water sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('snow')}: {conditions.snow} <Snowing sx={{ verticalAlign: 'middle' }} /> </li>
+                    <li>{t('solar_energy')}: {conditions.solarenergy} <Brightness5 sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('solar_radiation')}: {conditions.solarradiation} <Brightness7 sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('stations')}: {conditions.stations} <Train sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('sunrise')}: {conditions.sunrise} <Sunny sx={{ verticalAlign: 'middle' }}/></li>
+                    <li>{t('sunset')}: {conditions.sunset} <DarkMode sx={{ verticalAlign: 'middle' }}/> </li>
                 </ul>
             </Box>
 
