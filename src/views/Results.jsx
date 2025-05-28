@@ -159,14 +159,13 @@ const Results = () => {
                     WebkitTextStroke: "2px black",
                     color: "white",
                     textAlign: 'center',
-                }}>Oops!</Typography>
+                }}>{t('oops')}Oops!</Typography>
                 
                 <Typography variant='h2' sx={{
                     WebkitTextStroke: "2px black",
                     color: "white",
                     textAlign: 'center',
-                }}>{errorDesc}
-                </Typography>
+                }}>{errorDesc}</Typography>
             </Box>
 
 
@@ -220,7 +219,7 @@ const Results = () => {
                             justifyContent: 'center'
                         }}>
                             <Warning sx={{ color: 'yellow', fontSize: '6em', '& path': {stroke: 'black',strokeWidth: 1,} }} />
-                            <Typography variant="h1">WARNING!</Typography>
+                            <Typography variant="h1">{t('warning')}</Typography>
                         </Box>
                         <Box sx={{
                             margin: '0 1em',
@@ -250,7 +249,7 @@ const Results = () => {
                         alignItems: 'center',
                     }}>
                         <Grid size={12}>
-                            <Typography variant="h1">General Conditions</Typography>
+                            <Typography variant="h1">{t('general_conditions')}</Typography>
                         </Grid>
                         <Grid size={5}>
                             <li>{t('cloud_cover')}: {conditions.cloudcover} <Cloud sx={{ verticalAlign: 'middle' }}/> </li>
@@ -262,16 +261,15 @@ const Results = () => {
                             <li>{t('temp')}: {fahrenheitToCelsius(days[0].temp)}ºC</li>
                             <li>{t('feels_like')}: {fahrenheitToCelsius(conditions.feelslike)} <Visibility sx={{ verticalAlign: 'middle' }}/> </li>
                             <li>{t('humidity')}: {conditions.humidity}  <Waves sx={{ verticalAlign: 'middle' }}/> </li>
-                            <li>{t('icon')}: {conditions.icon}</li>
+                            <li>{t('moonphase')}: {conditions.moonphase} <Brightness2 sx={{ verticalAlign: 'middle' }}/> </li>
                         </Grid>
                         <Grid size={5}>
-                            <li>{t('moonphase')}: {conditions.moonphase} <Brightness2 sx={{ verticalAlign: 'middle' }}/> </li>
                             <li>{t('precip')}: {conditions.precip} <ScatterPlot sx={{ verticalAlign: 'middle' }}/> </li>
                             <li>{t('pressure')}: {conditions.pressure} <Water sx={{ verticalAlign: 'middle' }}/> </li>
                             <li>{t('snow')}: {conditions.snow} <Snowing sx={{ verticalAlign: 'middle' }} /> </li>
+                            <li>{t('solar_energy')}: {conditions.solarenergy} <Brightness5 sx={{ verticalAlign: 'middle' }}/> </li>
                         </Grid>
                         <Grid size={5}>
-                            <li>{t('solar_energy')}: {conditions.solarenergy} <Brightness5 sx={{ verticalAlign: 'middle' }}/> </li>
                             <li>{t('solar_radiation')}: {conditions.solarradiation} <Brightness7 sx={{ verticalAlign: 'middle' }}/> </li>
                             <li>{t('stations')}: {conditions.stations} <Train sx={{ verticalAlign: 'middle' }}/> </li>
                             <li>{t('sunrise')}: {conditions.sunrise} <Sunny sx={{ verticalAlign: 'middle' }}/></li>
@@ -292,7 +290,7 @@ const Results = () => {
                         labels: fiveDaysTitle,
                         datasets: [
                             {
-                            label: 'Weather For The Next 5 Days',
+                            label: t('weather_legend'),
                             data: fiveDays,
                             borderColor: 'rgba(75, 192, 192, 1)',
                             backgroundColor: 'rgba(75, 192, 192, 0.2)',

@@ -16,5 +16,30 @@
     "page_not_found":"Pàgina no trovada",
     "where_are_you":"On ets?",
 
+    "go_back":"Torna darrere",
+
+    "oops":"Ups!",
+    "warning":"AVÍS!",
+    "general_conditions":"Condicions Generals",
+    "weather_legend":"Temperatura Pels Pròxims 5 Dies",
+
+    "cloud_cover":"Cloud cover",
+    "conditions":"Condicions",
+    "datetime":"Última Hora on es va Mesurar",
+    "dew":"Condensació",
+    "temp":"Temperatura",
+    "feels_like":"Sensació Tèrmica",
+    "humidity":"Humitat",
+    "icon":"Icon",
+    "moonphase":"Fase Lunar",
+    "precip":"Precipitacions",
+    "pressure":"Pressió",
+    "snow":"Neu",
+    "solar_energy":"Energia solar",
+    "solar_radiation":"Radiació solar",
+    "stations":"Estacions",
+    "sunrise":"Sortida del Sol",
+    "sunset":"Crepúscul",
+
     "first_solve_the_problem":"Primer, resol el problema. Després, programa-ho."
 }

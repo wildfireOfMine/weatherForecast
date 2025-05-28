@@ -17,5 +17,30 @@
     "page_not_found":"Page not found",
     "where_are_you":"Where are you?",
 
+    "go_back":"Go back",
+
+    "oops":"Oops!",
+    "warning":"WARNING!",
+    "general_conditions":"General Conditions",
+    "weather_legend":"Temperature For The Next 5 Days",
+
+    "cloud_cover":"Cloud cover",
+    "conditions":"Conditions",
+    "datetime":"Datetime",
+    "dew":"Dew",
+    "temp":"Temperature",
+    "feels_like":"Feels like",
+    "humidity":"Humidity",
+    "icon":"Icon",
+    "moonphase":"Moonphase",
+    "precip":"Precipitations",
+    "pressure":"Pressure",
+    "snow":"Snow",
+    "solar_energy":"Solar energy",
+    "solar_radiation":"Solar radiation",
+    "stations":"Stations",
+    "sunrise":"Sunrise",
+    "sunset":"Sunset",
+
     "first_solve_the_problem":"First, solve the problem. Then, write the code."
 }

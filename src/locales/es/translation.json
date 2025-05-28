@@ -17,6 +17,14 @@
     "page_not_found":"Página no encontrada",
     "where_are_you":"¿Dónde estás?",
 
+    "go_back":"Volver atrás",
+
+    "oops":"¡Ups!",
+    "warning":"¡AVISO!",
+    "general_conditions":"Condiciones Generales",
+    "weather_legend":"Temperatura Por Los Próximos 5 Días",
+
+
     "cloud_cover":"Capa de nubes",
     "conditions":"Condiciones",
     "datetime":"Última Hora en que se Midió",
