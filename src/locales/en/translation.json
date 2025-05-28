@@ -21,6 +21,7 @@
     "conditions":"Conditions",
     "datetime":"Datetime",
     "dew":"Dew",
+    "temp":"Temperature",
     "feels_like":"Feels like",
     "humidity":"Humidity",
     "icon":"Icon",

@@ -8,6 +8,42 @@ import Spinner from '../components/Spinner';
 import { Box, Rating, Typography } from '@mui/material';
 import { AccessTime, Brightness1, Brightness2, Brightness4, Brightness5, Brightness7, Cloud, DarkMode, DewPoint, LockClock, ScatterPlot, Snowboarding, Snowing, Sunny, TempleHinduRounded, Train, Visibility, Warning, Water, Waves } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
+import { Line } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+
+const fahrenheitToCelsius = (days) => {
+    if (days.length > 1) {        
+        const daysCelsius = [];
+        for (let i = 0; i<days.length; i++) {
+            daysCelsius.push(((days[i] - 32) / 1.8).toFixed(2));
+        }
+            return daysCelsius;
+
+    } else {
+        days = (days - 32) / 1.8;
+        return days.toFixed(2);
+    }
+}
 
 const Results = () => {
     const API_KEY = import.meta.env.VITE_API_KEY;
@@ -17,6 +53,8 @@ const Results = () => {
     const [data, setData] = useState(null);
     const [alerts, setAlerts] = useState(null);
     const [days, setDays] = useState(null);
+    const [fiveDays, setFiveDays] = useState([]);
+    const [fiveDaysTitle, setFiveDaysTitle] = useState([]);
     const [conditions, setConditions] = useState(null);
     const [errorDesc, setErrorDesc] = useState('');
     const { i18n, t } = useTranslation();
@@ -35,6 +73,13 @@ const Results = () => {
             
             setDays(response.days);
             setConditions(response.currentConditions)
+
+            const firstFiveTemps = response.days.slice(0, 5).map(day => day.temp);
+            const firstFiveTempsCelsius = fahrenheitToCelsius(firstFiveTemps);
+            setFiveDays(firstFiveTempsCelsius);
+            
+            const firstFiveTitles = response.days.slice(0, 5).map(day => day.datetime);
+            setFiveDaysTitle(firstFiveTitles);
         }).catch((err) => {
             console.log(err);
             setError(true);
@@ -71,7 +116,7 @@ const Results = () => {
                 top: 0,
                 left: 0,
                 width: '100%',
-                height: '105%',
+                height: '103%',
                 backgroundColor: 'black',
                 opacity: 0.4,
                 zIndex: 998,
@@ -140,7 +185,8 @@ const Results = () => {
                     <li>{t('conditions')}: {conditions.conditions} <TempleHinduRounded sx={{ verticalAlign: 'middle' }}/> </li>
                     <li>{t('datetime')}: {conditions.datetime} <AccessTime sx={{ verticalAlign: 'middle' }}/> </li>
                     <li>{t('dew')}: {conditions.dew} <DewPoint sx={{ verticalAlign: 'middle' }}/> </li>
-                    <li>{t('feels_like')} {conditions.feelslike} <Visibility sx={{ verticalAlign: 'middle' }}/> </li>
+                    <li>{t('temp')}: {fahrenheitToCelsius(days[0].temp)}ºC</li>
+                    <li>{t('feels_like')}: {fahrenheitToCelsius(conditions.feelslike)} <Visibility sx={{ verticalAlign: 'middle' }}/> </li>
                     <li>{t('humidity')}: {conditions.humidity}  <Waves sx={{ verticalAlign: 'middle' }}/> </li>
                     <li>{t('icon')}: {conditions.icon}</li>
                     <li>{t('moonphase')}: {conditions.moonphase} <Brightness2 sx={{ verticalAlign: 'middle' }}/> </li>
@@ -156,16 +202,27 @@ const Results = () => {
             </Box>
 
             <Box className='daysGraphic' sx={{
-                backgroundColor: 'yellow',
-                border: '5px solid black',
+                backgroundColor: 'white',
+                
                 position: 'relative',
                 zIndex: 1000,
                 margin: '2em auto',
-                maxWidth: '85%',
+                display: 'flex',
+                justifyContent: 'center',
             }}>
-                <ul>
-                    {days.map((day, index) => <li key={index}>{day.conditions}</li>)}
-                </ul>
+                <Line data={{
+                    labels: fiveDaysTitle,
+                    datasets: [
+                        {
+                        label: 'Weather For The Next 5 Days',
+                        data: fiveDays,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        tension: 0.3,
+                        fill: true,
+                        }
+                    ]
+                }}/>
             </Box>
         </>
             }

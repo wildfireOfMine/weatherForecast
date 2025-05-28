@@ -21,6 +21,7 @@
     "conditions":"Condiciones",
     "datetime":"Última Hora en que se Midió",
     "dew":"Condensación",
+    "temp":"Temperatura",
     "feels_like":"Sensación térmica",
     "humidity":"Humedad",
     "icon":"Icono",
