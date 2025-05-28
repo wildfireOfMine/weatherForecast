@@ -104,154 +104,216 @@ const Results = () => {
         position: 'relative',
     }}>
 
-    <Box sx={{ flexGrow: 1, position: 'relative' }}>
-
-    {loading ? <Spinner />
-
-    : error ? <h1>Oops! {errorDesc}</h1>
+    <>
+        {loading ?
         
-    :   <>
+        <Box sx={{ flexGrow: 1, position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
             <Box sx={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
                 width: '100%',
-                height: '103%',
+                height: '110%',
                 backgroundColor: 'black',
                 opacity: 0.4,
                 zIndex: 998,
             }} />
 
             <Box sx={{
-                margin: '2em auto',
-                zIndex: 1000,
-                position: 'relative',
-                color: 'white',
-                WebkitTextStroke: "1px black",
-                maxWidth: '50%',
-                }}>
-                <Typography variant='h2'>{data.resolvedAddress}</Typography>
-                <Typography variant='h3'><q>{data.description}</q></Typography>
-            </Box>
-
-                <Box className='map' sx={{ position: 'relative', zIndex: 1000 }}>
-                    <LinkMap lat={data.latitude} lng={data.longitude} />
-                </Box>
-
-            {alerts.length > 0 && (
-                <Box sx={{
-                    backgroundColor: '#FF474C',
-                    border: '5px solid red',
-                    zIndex: 1000,
-                    position: 'relative',
-                    display: 'flex',
-                    justifyContent: 'space-evenly',
-                    alignItems: 'center',
-                    maxWidth: '50%',
-                    maxHeight: 500,
-                    height: '24vh',
-                    margin: '2em auto',
-                }}>
-                    <Box sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }}>
-                        <Warning sx={{ color: 'yellow', fontSize: '6em', '& path': {stroke: 'black',strokeWidth: 1,} }} />
-                        <Typography variant="h1">WARNING!</Typography>
-                    </Box>
-                    <Box sx={{
-                        margin: '0 1em',
-                    }}>
-                        <ul className='alerts'>
-                            {alerts.map((alert, index) => <li key={index}>{alert.event}</li>)}
-                        </ul>
-                    </Box>
-                </Box>
-            )}
-
-            <Box className='generalConditions' sx={{
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                textAlign: 'center',
-                backgroundColor: 'white',
-                position: 'relative',
                 zIndex: 1000,
-                margin: '2em 0',
-                padding: '1em 2em',
-                fontSize: '2em',
+                position: 'absolute',
+                transform: 'scale(5)',
             }}>
-                
-                <Grid container spacing={4} sx={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}>
-                    <Grid size={12}>
-                        <Typography variant="h1">General Conditions</Typography>
-                    </Grid>
-                    <Grid size={5}>
-                        <li>{t('cloud_cover')}: {conditions.cloudcover} <Cloud sx={{ verticalAlign: 'middle' }}/> </li>
-                        <li>{t('conditions')}: {conditions.conditions} <TempleHinduRounded sx={{ verticalAlign: 'middle' }}/> </li>
-                        <li>{t('datetime')}: {conditions.datetime} <AccessTime sx={{ verticalAlign: 'middle' }}/> </li>
-                        <li>{t('dew')}: {conditions.dew} <DewPoint sx={{ verticalAlign: 'middle' }}/> </li>
-                    </Grid>
-                    <Grid size={5}>
-                        <li>{t('temp')}: {fahrenheitToCelsius(days[0].temp)}ºC</li>
-                        <li>{t('feels_like')}: {fahrenheitToCelsius(conditions.feelslike)} <Visibility sx={{ verticalAlign: 'middle' }}/> </li>
-                        <li>{t('humidity')}: {conditions.humidity}  <Waves sx={{ verticalAlign: 'middle' }}/> </li>
-                        <li>{t('icon')}: {conditions.icon}</li>
-                    </Grid>
-                    <Grid size={5}>
-                        <li>{t('moonphase')}: {conditions.moonphase} <Brightness2 sx={{ verticalAlign: 'middle' }}/> </li>
-                        <li>{t('precip')}: {conditions.precip} <ScatterPlot sx={{ verticalAlign: 'middle' }}/> </li>
-                        <li>{t('pressure')}: {conditions.pressure} <Water sx={{ verticalAlign: 'middle' }}/> </li>
-                        <li>{t('snow')}: {conditions.snow} <Snowing sx={{ verticalAlign: 'middle' }} /> </li>
-                    </Grid>
-                    <Grid size={5}>
-                        <li>{t('solar_energy')}: {conditions.solarenergy} <Brightness5 sx={{ verticalAlign: 'middle' }}/> </li>
-                        <li>{t('solar_radiation')}: {conditions.solarradiation} <Brightness7 sx={{ verticalAlign: 'middle' }}/> </li>
-                        <li>{t('stations')}: {conditions.stations} <Train sx={{ verticalAlign: 'middle' }}/> </li>
-                        <li>{t('sunrise')}: {conditions.sunrise} <Sunny sx={{ verticalAlign: 'middle' }}/></li>
-                        <li>{t('sunset')}: {conditions.sunset} <DarkMode sx={{ verticalAlign: 'middle' }}/> </li>
-                    </Grid>
-                </Grid>
+                <Spinner />
             </Box>
+        </Box>
+        
 
-            <Box className='daysGraphic' sx={{
-                backgroundColor: 'white',
-                position: 'relative',
-                zIndex: 1000,
-                margin: '2em auto',
+
+        : error ? 
+        
+        <Box sx={{ flexGrow: 1, position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+            <Box sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '112%',
+                backgroundColor: 'black',
+                opacity: 0.4,
+                zIndex: 998,
+            }} />
+
+            <Box sx={{
                 display: 'flex',
                 justifyContent: 'center',
+                alignItems: 'center',
+                zIndex: 1000,
+                position: 'absolute',
+                flexDirection: 'column',
             }}>
-                <Line data={{
-                    labels: fiveDaysTitle,
-                    datasets: [
-                        {
-                        label: 'Weather For The Next 5 Days',
-                        data: fiveDays,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        tension: 0.3,
-                        fill: true,
-                        }
-                    ]
-                }}/>
+                <Typography variant="h1" sx={{
+                    WebkitTextStroke: "2px black",
+                    color: "white",
+                    textAlign: 'center',
+                }}>Oops!</Typography>
+                
+                <Typography variant='h2' sx={{
+                    WebkitTextStroke: "2px black",
+                    color: "white",
+                    textAlign: 'center',
+                }}>{errorDesc}
+                </Typography>
             </Box>
-        </>
-            }
+
+
         </Box>
+            
+        :   <Box sx={{ flexGrow: 1, position: 'relative'}}>
+                <Box sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '103%',
+                    backgroundColor: 'black',
+                    opacity: 0.4,
+                    zIndex: 998,
+                }} />
+
+                <Box sx={{
+                    margin: '2em auto',
+                    zIndex: 1000,
+                    position: 'relative',
+                    color: 'white',
+                    WebkitTextStroke: "1px black",
+                    maxWidth: '50%',
+                    }}>
+                    <Typography variant='h2'>{data.resolvedAddress}</Typography>
+                    <Typography variant='h3'><q>{data.description}</q></Typography>
+                </Box>
+
+                    <Box className='map' sx={{ position: 'relative', zIndex: 1000 }}>
+                        <LinkMap lat={data.latitude} lng={data.longitude} />
+                    </Box>
+
+                {alerts.length > 0 && (
+                    <Box sx={{
+                        backgroundColor: '#FF474C',
+                        border: '5px solid red',
+                        zIndex: 1000,
+                        position: 'relative',
+                        display: 'flex',
+                        justifyContent: 'space-evenly',
+                        alignItems: 'center',
+                        maxWidth: '50%',
+                        maxHeight: 500,
+                        height: '24vh',
+                        margin: '2em auto',
+                    }}>
+                        <Box sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            <Warning sx={{ color: 'yellow', fontSize: '6em', '& path': {stroke: 'black',strokeWidth: 1,} }} />
+                            <Typography variant="h1">WARNING!</Typography>
+                        </Box>
+                        <Box sx={{
+                            margin: '0 1em',
+                        }}>
+                            <ul className='alerts'>
+                                {alerts.map((alert, index) => <li key={index}>{alert.event}</li>)}
+                            </ul>
+                        </Box>
+                    </Box>
+                )}
+
+                <Box className='generalConditions' sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    backgroundColor: 'white',
+                    position: 'relative',
+                    zIndex: 1000,
+                    margin: '2em 0',
+                    padding: '1em 2em',
+                    fontSize: '2em',
+                }}>
+                    
+                    <Grid container spacing={4} sx={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
+                        <Grid size={12}>
+                            <Typography variant="h1">General Conditions</Typography>
+                        </Grid>
+                        <Grid size={5}>
+                            <li>{t('cloud_cover')}: {conditions.cloudcover} <Cloud sx={{ verticalAlign: 'middle' }}/> </li>
+                            <li>{t('conditions')}: {conditions.conditions} <TempleHinduRounded sx={{ verticalAlign: 'middle' }}/> </li>
+                            <li>{t('datetime')}: {conditions.datetime} <AccessTime sx={{ verticalAlign: 'middle' }}/> </li>
+                            <li>{t('dew')}: {conditions.dew} <DewPoint sx={{ verticalAlign: 'middle' }}/> </li>
+                        </Grid>
+                        <Grid size={5}>
+                            <li>{t('temp')}: {fahrenheitToCelsius(days[0].temp)}ºC</li>
+                            <li>{t('feels_like')}: {fahrenheitToCelsius(conditions.feelslike)} <Visibility sx={{ verticalAlign: 'middle' }}/> </li>
+                            <li>{t('humidity')}: {conditions.humidity}  <Waves sx={{ verticalAlign: 'middle' }}/> </li>
+                            <li>{t('icon')}: {conditions.icon}</li>
+                        </Grid>
+                        <Grid size={5}>
+                            <li>{t('moonphase')}: {conditions.moonphase} <Brightness2 sx={{ verticalAlign: 'middle' }}/> </li>
+                            <li>{t('precip')}: {conditions.precip} <ScatterPlot sx={{ verticalAlign: 'middle' }}/> </li>
+                            <li>{t('pressure')}: {conditions.pressure} <Water sx={{ verticalAlign: 'middle' }}/> </li>
+                            <li>{t('snow')}: {conditions.snow} <Snowing sx={{ verticalAlign: 'middle' }} /> </li>
+                        </Grid>
+                        <Grid size={5}>
+                            <li>{t('solar_energy')}: {conditions.solarenergy} <Brightness5 sx={{ verticalAlign: 'middle' }}/> </li>
+                            <li>{t('solar_radiation')}: {conditions.solarradiation} <Brightness7 sx={{ verticalAlign: 'middle' }}/> </li>
+                            <li>{t('stations')}: {conditions.stations} <Train sx={{ verticalAlign: 'middle' }}/> </li>
+                            <li>{t('sunrise')}: {conditions.sunrise} <Sunny sx={{ verticalAlign: 'middle' }}/></li>
+                            <li>{t('sunset')}: {conditions.sunset} <DarkMode sx={{ verticalAlign: 'middle' }}/> </li>
+                        </Grid>
+                    </Grid>
+                </Box>
+
+                <Box className='daysGraphic' sx={{
+                    backgroundColor: 'white',
+                    position: 'relative',
+                    zIndex: 1000,
+                    margin: '2em auto',
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}>
+                    <Line data={{
+                        labels: fiveDaysTitle,
+                        datasets: [
+                            {
+                            label: 'Weather For The Next 5 Days',
+                            data: fiveDays,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            tension: 0.3,
+                            fill: true,
+                            }
+                        ]
+                    }}/>
+                </Box>
+            </Box>
+            }
+        </>
 
     <Box sx={{
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'black',
-    padding: '1em',
-    margin: '0 1em',
-    zIndex: 998,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'black',
+        padding: '1em',
+        margin: '0 1em',
+        zIndex: 998,
     }}>
         <GoBack />
     </Box>
