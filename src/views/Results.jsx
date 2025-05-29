@@ -177,7 +177,7 @@ const Results = () => {
                     top: 0,
                     left: 0,
                     width: '100%',
-                    height: '103%',
+                    height: '104%',
                     backgroundColor: 'black',
                     opacity: 0.4,
                     zIndex: 998,
@@ -280,6 +280,7 @@ const Results = () => {
 
                 <Box className='daysGraphic' sx={{
                     backgroundColor: 'white',
+                    height: 500,
                     position: 'relative',
                     zIndex: 1000,
                     margin: '2em auto',
