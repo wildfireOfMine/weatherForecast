@@ -45,7 +45,12 @@ const Home = () => {
                 color:"white", 
                 WebkitTextStroke: "2px black",
                 padding: "0 1em",
-                fontSize: "5em",
+                fontSize: {
+                  xs: '2.5rem',
+                  sm: '3rem',
+                  md: '3.5rem',
+                  lg: '4.5rem',
+                },
               }}>{t('home_desc1')}<a href='https://www.visualcrossing.com/' target='_blank'>Visual Crossing</a>. 
                {t('home_desc2')}<a href='https://www.theodinproject.com/' target='_blank'>The Odin Project</a> 
                {t('home_desc3')}</Typography>
@@ -75,6 +80,12 @@ const Home = () => {
               <Box sx={{zIndex: 999}}>
                 <Typography variant='h1' sx={{
                   textAlign:"center", color:"white", WebkitTextStroke: "2px black",
+                  fontSize: {
+                   xs: "3em",
+                   sm: "5em",
+                   md: "7em",
+                   lg: "10em", 
+                  }
                 }}>{t('looking')}</Typography>
                 <SearchBar size="big"/>
               </Box>

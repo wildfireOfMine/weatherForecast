@@ -29,7 +29,22 @@ export const Navbar = () => {
 
             <SearchBar size="small" colour="black"  fillColour="black"  />
 
-            <Box sx={{ width: "20%", display: "flex", justifyContent: "space-evenly", alignItems: "center", fontSize: "1.4em"}}>
+            <Box sx={{ 
+              width: {
+                xs: '5%',
+                sm: '10%', 
+                md: '15%', 
+                lg: '20%'
+              }, 
+              display: "flex", 
+              justifyContent: "space-evenly", 
+              alignItems: "center", 
+              fontSize: {
+                xs: '0.2em',
+                sm: '0.5em', 
+                md: '1em', 
+                lg: '1.4em'
+              }}}>
               <NavLink 
                 to="/"
                 className={ ({isActive}) => `nav-link ${isActive ? 'active' : ''}`}
@@ -48,6 +63,28 @@ export const Navbar = () => {
                 value={name}
                 label="Language"
                 onChange={handleChange}
+                sx={{
+                  width: {
+                   xs: "5%",
+                   sm: "5%",
+                   md: "10%",
+                   lg: "20%", 
+                  },
+                fontSize: {
+                   xs: 1,
+                   sm: 5,
+                   md: 10,
+                   lg: "20px", 
+                },
+                '& .MuiSelect-select': {
+                fontSize: {
+                  xs: '10%',
+                  sm: '20%',
+                  md: '50%',
+                  lg: '100%',
+                },
+              },
+                }}
               >
                 <MenuItem value="en" onClick={()=>i18n.changeLanguage("en")}>EN</MenuItem>
                 <MenuItem value="es" onClick={()=>i18n.changeLanguage("es")}>ES</MenuItem>

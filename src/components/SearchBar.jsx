@@ -41,7 +41,12 @@ const SearchBar = ({size="small", colour="white", width="0.6em", fillColour="whi
         }}
         sx={{
           fontSize:"99em",
-          width: width,
+          width: {
+            xs: '10rem',
+            sm: '20rem', 
+            md: '30rem', 
+            lg: '50rem'
+          },
           '& .MuiInputBase-root': {
             color: colour,
             borderColor: colour,
