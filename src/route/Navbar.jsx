@@ -136,7 +136,7 @@ export const Navbar = () => {
                       <MenuItem value="en" onClick={()=>i18n.changeLanguage("en")}>English</MenuItem>
                       <MenuItem value="es" onClick={()=>i18n.changeLanguage("es")}>Castellano</MenuItem>
                       <MenuItem value="cat" onClick={()=>i18n.changeLanguage("cat")}>Català</MenuItem>
-                      <MenuItem value="pt" onClick={()=>i18n.changeLanguage("pt")}>Português</MenuItem>
+                      <MenuItem value="pr" onClick={()=>i18n.changeLanguage("pr")}>Português</MenuItem>
                       <MenuItem value="it" onClick={()=>i18n.changeLanguage("it")}>Italiano</MenuItem>
                     </Menu>
                   </>
