@@ -2,6 +2,7 @@
     "enter_a_city_name":"Escribe el nombre de una ciudad",
     "search_inside_bar":"Busca...",
     "home":"Inicio",
+    "menu":"Menú",
     "search":"Buscar",
 
     "next":"Siguiente",
@@ -27,7 +28,7 @@
 
     "cloud_cover":"Capa de nubes",
     "conditions":"Condiciones",
-    "datetime":"Última Hora en que se Midió",
+    "datetime":"Hora",
     "dew":"Condensación",
     "temp":"Temperatura",
     "feels_like":"Sensación térmica",

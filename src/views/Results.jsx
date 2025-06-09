@@ -166,7 +166,7 @@ const Results = () => {
                     WebkitTextStroke: "2px black",
                     color: "white",
                     textAlign: 'center',
-                }}>{t('oops')}Oops!</Typography>
+                }}>{t('oops')}</Typography>
                 
                 <Typography variant='h2' sx={{
                     WebkitTextStroke: "2px black",
@@ -318,7 +318,7 @@ const Results = () => {
                         </Grid>
                         <Grid size={5}>
                             <li>{t('solar_radiation')}: {conditions.solarradiation} <Brightness7 sx={{ verticalAlign: 'middle' }}/> </li>
-                            <li>{t('stations')}: {conditions.stations} <Train sx={{ verticalAlign: 'middle' }}/> </li>
+                            <li>{t('stations')}: {conditions.stations.join(', ')} <Train sx={{ verticalAlign: 'middle' }}/> </li>
                             <li>{t('sunrise')}: {conditions.sunrise} <Sunny sx={{ verticalAlign: 'middle' }}/></li>
                             <li>{t('sunset')}: {conditions.sunset} <DarkMode sx={{ verticalAlign: 'middle' }}/> </li>
                         </Grid>
@@ -338,7 +338,7 @@ const Results = () => {
                                 <li>{t('snow')}: {conditions.snow} <Snowing sx={{ verticalAlign: 'middle' }} /> </li>
                                 <li>{t('solar_energy')}: {conditions.solarenergy} <Brightness5 sx={{ verticalAlign: 'middle' }}/> </li>
                                 <li>{t('solar_radiation')}: {conditions.solarradiation} <Brightness7 sx={{ verticalAlign: 'middle' }}/> </li>
-                                <li>{t('stations')}: {conditions.stations} <Train sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('stations')}: {conditions.stations.join(', ')} <Train sx={{ verticalAlign: 'middle' }}/> </li>
                                 <li>{t('sunrise')}: {conditions.sunrise} <Sunny sx={{ verticalAlign: 'middle' }}/></li>
                                 <li>{t('sunset')}: {conditions.sunset} <DarkMode sx={{ verticalAlign: 'middle' }}/> </li>
                             </ul>

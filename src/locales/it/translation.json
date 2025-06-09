@@ -2,6 +2,7 @@
     "enter_a_city_name":"Scrivi il nome di una città",
     "search_inside_bar":"Cerca...",
     "home":"Inizio",
+    "menu":"Menu",
     "search":"Cercare",
 
     "next":"Siguente",
@@ -26,7 +27,7 @@
 
     "cloud_cover":"Copertura nuvolosa",
     "conditions":"Condizione",
-    "datetime":"Datetime",
+    "datetime":"Ora",
     "dew":"Punto di rugiada",
     "temp":"Temperatura",
     "feels_like":"Temperatura percepita",

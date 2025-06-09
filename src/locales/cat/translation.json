@@ -2,6 +2,7 @@
     "enter_a_city_name":"Escriu el nom d'una ciutat",
     "search_inside_bar":"Cerca...",
     "home":"Inici",
+    "menu":"Menú",
     "search":"Cercar",
 
     "next":"Següent",
@@ -25,7 +26,7 @@
 
     "cloud_cover":"Cloud cover",
     "conditions":"Condicions",
-    "datetime":"Última Hora on es va Mesurar",
+    "datetime":"Hora",
     "dew":"Condensació",
     "temp":"Temperatura",
     "feels_like":"Sensació Tèrmica",

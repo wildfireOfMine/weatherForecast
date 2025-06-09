@@ -98,6 +98,7 @@ export const Navbar = () => {
                 <MenuItem value="en" onClick={()=>i18n.changeLanguage("en")}>EN</MenuItem>
                 <MenuItem value="es" onClick={()=>i18n.changeLanguage("es")}>ES</MenuItem>
                 <MenuItem value="cat" onClick={()=>i18n.changeLanguage("cat")}>CAT</MenuItem>
+                <MenuItem value="pr" onClick={()=>i18n.changeLanguage("pr")}>PT</MenuItem>
                 <MenuItem value="it" onClick={()=>i18n.changeLanguage("it")}>IT</MenuItem>
               </Select>
               </Box>
@@ -105,7 +106,7 @@ export const Navbar = () => {
                 {(popupState) => (
                   <>
                     <Button variant="contained" {...bindTrigger(popupState)}>
-                      Menu {/* AÑADIR TRADUCCIÓN PEQUEÑA */}
+                      {t('menu')}
                     </Button>
                     <Menu {...bindMenu(popupState)}>
                       <MenuItem
@@ -135,6 +136,7 @@ export const Navbar = () => {
                       <MenuItem value="en" onClick={()=>i18n.changeLanguage("en")}>English</MenuItem>
                       <MenuItem value="es" onClick={()=>i18n.changeLanguage("es")}>Castellano</MenuItem>
                       <MenuItem value="cat" onClick={()=>i18n.changeLanguage("cat")}>Català</MenuItem>
+                      <MenuItem value="pt" onClick={()=>i18n.changeLanguage("pt")}>Português</MenuItem>
                       <MenuItem value="it" onClick={()=>i18n.changeLanguage("it")}>Italiano</MenuItem>
                     </Menu>
                   </>
