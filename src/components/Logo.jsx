@@ -6,7 +6,7 @@ const Logo = ({width=5, height=5}) => {
     <img src='../../imgs/WeatherForecast.png' width={width} height={height} alt='Weather Forecast Logo'
     style={{
       minHeight: "75px",
-      minWidth: "100px",
+      minWidth: "75px",
     }}/>
   )
 }
