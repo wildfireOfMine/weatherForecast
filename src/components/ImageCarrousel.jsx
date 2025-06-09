@@ -6,7 +6,9 @@ import { useTranslation } from 'react-i18next';
  */
 const ImageCarrousel = () => {
   const { i18n, t } = useTranslation();
-  const [indicators, setIndicators] = useState(0);
+  const [indicators, setIndicators] = useState(Math.floor(Math.random() * (3 - 0 + 0)) + 0);
+
+  console.log(indicators);
 
   const nextPage = () => {
     setIndicators((indicator) => (indicator + 1) % imgsArray.length);
@@ -60,7 +62,6 @@ const ImageCarrousel = () => {
           <img key={indicators} src={picture.image} name={picture.name} alt={picture.credits} style={{ 
             width: "100%", height: "100%", maxHeight: "600px", objectFit: "cover" }}/>
         </a> 
-        <Button sx={{position:'absolute', zIndex: 1000, bottom: '10%', right: '48%', color:'white'}} onClick={nextPage}>{t("next")}</Button>
     </Box>
   )
 }
