@@ -2,15 +2,23 @@ import { Cloud } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
 import {Link, NavLink} from "react-router-dom"
 import SearchBar from "../components/SearchBar";
-import { AppBar, Box, Button, ButtonGroup, MenuItem, Select, Toolbar } from "@mui/material";
+import { AppBar, Box, Button, ButtonGroup, Menu, MenuItem, Select, Toolbar, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import Logo from "../components/Logo";
+import { useTheme } from "styled-components";
+import PopupState, { bindMenu, bindTrigger } from "material-ui-popup-state";
 
 /************************************************************************************************** */
 
 export const Navbar = () => {
   const { i18n, t } = useTranslation();
   const [name, setName] = useState(i18n.language || 'en');
+  const theme = useTheme();
+  const extraSmall = useMediaQuery(theme.breakpoints.down("xs"));
+  const small = useMediaQuery(theme.breakpoints.down("sm"));
+  const medium = useMediaQuery(theme.breakpoints.down("md"));
+  const large = useMediaQuery(theme.breakpoints.down("lg"));
+  const extraLarge = useMediaQuery(theme.breakpoints.down("xl"));
 
   const handleChange = (e) => {
     setName(e.target.value);
@@ -29,6 +37,7 @@ export const Navbar = () => {
 
             <SearchBar size="small" colour="black"  fillColour="black"  />
 
+          { !large ?
             <Box sx={{ 
               width: {
                 xs: '5%',
@@ -59,7 +68,7 @@ export const Navbar = () => {
                 {t('search')}
               </NavLink>
 
-              <Select
+               <Select
                 value={name}
                 label="Language"
                 onChange={handleChange}
@@ -91,7 +100,48 @@ export const Navbar = () => {
                 <MenuItem value="cat" onClick={()=>i18n.changeLanguage("cat")}>CAT</MenuItem>
                 <MenuItem value="it" onClick={()=>i18n.changeLanguage("it")}>IT</MenuItem>
               </Select>
-            </Box>
+              </Box>
+            : <PopupState variant="popover" popupId="demo-popup-menu">
+                {(popupState) => (
+                  <>
+                    <Button variant="contained" {...bindTrigger(popupState)}>
+                      Menu {/* AÑADIR TRADUCCIÓN PEQUEÑA */}
+                    </Button>
+                    <Menu {...bindMenu(popupState)}>
+                      <MenuItem
+                      sx={{
+                          color: 'black',
+                      }}>
+                        <NavLink 
+                        to="/"
+                        className={ ({isActive}) => `nav-link ${isActive ? 'active' : ''}`}
+                        style={{ color: 'black' }}
+                        >
+                          {t('home')}
+                        </NavLink>
+                      </MenuItem>
+                      <MenuItem
+                      sx={{
+                          color: 'black',
+                      }}>
+                        <NavLink 
+                          to="/search"
+                          className={ ({isActive}) => `nav-link ${isActive ? 'active' : ''}`}
+                          style={{ color: 'black' }}
+                        >
+                          {t('search')}
+                        </NavLink>
+                      </MenuItem>
+                      <MenuItem value="en" onClick={()=>i18n.changeLanguage("en")}>English</MenuItem>
+                      <MenuItem value="es" onClick={()=>i18n.changeLanguage("es")}>Castellano</MenuItem>
+                      <MenuItem value="cat" onClick={()=>i18n.changeLanguage("cat")}>Català</MenuItem>
+                      <MenuItem value="it" onClick={()=>i18n.changeLanguage("it")}>Italiano</MenuItem>
+                    </Menu>
+                  </>
+                )}
+              </PopupState>
+            }
+            
           </Toolbar>
         </AppBar>
     </Box>

@@ -5,7 +5,7 @@ import LinkMap from '../components/LinkMap';
 import Footer from '../components/Footer';
 import BasicExample from '../components/Spinner';
 import Spinner from '../components/Spinner';
-import { Box, Grid, Rating, Typography } from '@mui/material';
+import { Box, Grid, Rating, Typography, useMediaQuery } from '@mui/material';
 import { AccessTime, Brightness1, Brightness2, Brightness4, Brightness5, Brightness7, Cloud, DarkMode, DewPoint, LockClock, ScatterPlot, Snowboarding, Snowing, Sunny, TempleHinduRounded, Train, Visibility, Warning, Water, Waves } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { Line } from 'react-chartjs-2';
@@ -19,6 +19,7 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
+import { useTheme } from 'styled-components';
 
 ChartJS.register(
   CategoryScale,
@@ -58,6 +59,12 @@ const Results = () => {
     const [conditions, setConditions] = useState(null);
     const [errorDesc, setErrorDesc] = useState('');
     const { i18n, t } = useTranslation();
+    const theme = useTheme();
+    const extraSmall = useMediaQuery(theme.breakpoints.down("xs"));
+    const small = useMediaQuery(theme.breakpoints.down("sm"));
+    const medium = useMediaQuery(theme.breakpoints.down("md"));
+    const large = useMediaQuery(theme.breakpoints.down("lg"));
+    const extraLarge = useMediaQuery(theme.breakpoints.down("xl"));
 
     useEffect(() =>{
         fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=us&key=${API_KEY}&contentType=json`, {
@@ -199,37 +206,74 @@ const Results = () => {
                         <LinkMap lat={data.latitude} lng={data.longitude} />
                     </Box>
 
-                {alerts.length > 0 && (
-                    <Box sx={{
-                        backgroundColor: '#FF474C',
-                        border: '5px solid red',
-                        zIndex: 1000,
-                        position: 'relative',
-                        display: 'flex',
-                        justifyContent: 'space-evenly',
-                        alignItems: 'center',
-                        maxWidth: '50%',
-                        maxHeight: 500,
-                        height: '24vh',
-                        margin: '2em auto',
-                    }}>
+                {alerts.length > 0 && 
+                    
+                    (
+                    !large ?
+                    <>
                         <Box sx={{
+                            backgroundColor: '#FF474C',
+                            border: '5px solid red',
+                            zIndex: 1000,
+                            position: 'relative',
                             display: 'flex',
+                            justifyContent: 'space-evenly',
                             alignItems: 'center',
-                            justifyContent: 'center'
+                            maxWidth: '50%',
+                            maxHeight: 500,
+                            height: '24vh',
+                            margin: '2em auto',
                         }}>
-                            <Warning sx={{ color: 'yellow', fontSize: '6em', '& path': {stroke: 'black',strokeWidth: 1,} }} />
-                            <Typography variant="h1">{t('warning')}</Typography>
+                            <Box sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}>
+                                <Warning sx={{ color: 'yellow', fontSize: '6em', '& path': {stroke: 'black',strokeWidth: 1,} }} />
+                                <Typography variant="h1">{t('warning')}</Typography>
+                            </Box>
+                            <Box sx={{
+                                margin: '0 1em',
+                            }}>
+                                <ul className='alerts'>
+                                    {alerts.map((alert, index) => <li key={index}>{alert.event}</li>)}
+                                </ul>
+                            </Box>
                         </Box>
-                        <Box sx={{
-                            margin: '0 1em',
+                    </>
+                    : <Box sx={{
+                            backgroundColor: '#FF474C',
+                            border: '5px solid red',
+                            zIndex: 1000,
+                            position: 'relative',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-evenly',
+                            alignItems: 'center',
+                            maxWidth: '90%',
+                            maxHeight: 500,
+                            height: '24vh',
+                            margin: '2em auto',
                         }}>
-                            <ul className='alerts'>
-                                {alerts.map((alert, index) => <li key={index}>{alert.event}</li>)}
-                            </ul>
+                            <Box sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}>
+                                <Warning sx={{ color: 'yellow', fontSize: '5em', '& path': {stroke: 'black',strokeWidth: 1,} }} />
+                                <Typography variant="h2">{t('warning')}</Typography>
+                            </Box>
+                            <Box sx={{
+                                margin: '0 1em',
+                            }}>
+                                <ul className='alerts'>
+                                    {alerts.map((alert, index) => <li key={index}>{alert.event}</li>)}
+                                </ul>
+                            </Box>
                         </Box>
-                    </Box>
-                )}
+
+                    )
+                }
 
                 <Box className='generalConditions' sx={{
                     display: 'flex',
@@ -249,8 +293,11 @@ const Results = () => {
                         alignItems: 'center',
                     }}>
                         <Grid size={12}>
-                            <Typography variant="h1">{t('general_conditions')}</Typography>
+                            {!small ? <Typography variant="h1">{t('general_conditions')}</Typography> : 
+                            <Typography variant="h2">{t('general_conditions')}</Typography>}
                         </Grid>
+                        { !medium ? 
+                        <>
                         <Grid size={5}>
                             <li>{t('cloud_cover')}: {conditions.cloudcover} <Cloud sx={{ verticalAlign: 'middle' }}/> </li>
                             <li>{t('conditions')}: {conditions.conditions} <TempleHinduRounded sx={{ verticalAlign: 'middle' }}/> </li>
@@ -275,6 +322,28 @@ const Results = () => {
                             <li>{t('sunrise')}: {conditions.sunrise} <Sunny sx={{ verticalAlign: 'middle' }}/></li>
                             <li>{t('sunset')}: {conditions.sunset} <DarkMode sx={{ verticalAlign: 'middle' }}/> </li>
                         </Grid>
+                        </>
+                        : <>
+                            <ul>
+                                <li>{t('cloud_cover')}: {conditions.cloudcover} <Cloud sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('conditions')}: {conditions.conditions} <TempleHinduRounded sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('datetime')}: {conditions.datetime} <AccessTime sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('dew')}: {conditions.dew} <DewPoint sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('temp')}: {fahrenheitToCelsius(days[0].temp)}ºC</li>
+                                <li>{t('feels_like')}: {fahrenheitToCelsius(conditions.feelslike)} <Visibility sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('humidity')}: {conditions.humidity}  <Waves sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('moonphase')}: {conditions.moonphase} <Brightness2 sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('precip')}: {conditions.precip} <ScatterPlot sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('pressure')}: {conditions.pressure} <Water sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('snow')}: {conditions.snow} <Snowing sx={{ verticalAlign: 'middle' }} /> </li>
+                                <li>{t('solar_energy')}: {conditions.solarenergy} <Brightness5 sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('solar_radiation')}: {conditions.solarradiation} <Brightness7 sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('stations')}: {conditions.stations} <Train sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('sunrise')}: {conditions.sunrise} <Sunny sx={{ verticalAlign: 'middle' }}/></li>
+                                <li>{t('sunset')}: {conditions.sunset} <DarkMode sx={{ verticalAlign: 'middle' }}/> </li>
+                            </ul>
+                          </>
+                        }
                     </Grid>
                 </Box>
 
@@ -286,6 +355,7 @@ const Results = () => {
                     margin: '2em auto',
                     display: 'flex',
                     justifyContent: 'center',
+                    alignItems: 'center',
                 }}>
                     <Line data={{
                         labels: fiveDaysTitle,
@@ -316,7 +386,12 @@ const Results = () => {
     }}>
         <GoBack />
     </Box>
-        <Footer />
+        <Box sx={{
+            zIndex: 998,
+        }}>
+            <Footer />
+        </Box>
+        
 
     </Box>
 
