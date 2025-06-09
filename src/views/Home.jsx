@@ -70,7 +70,7 @@ const Home = () => {
                 minHeight: '50%',
                 maxHeight: '100%',
                 color:"white", 
-                WebkitTextStroke: "1px black",
+                WebkitTextStroke: "0.5px black",
                 padding: "0 1em",
                 fontSize: '2em', /* {
                   xs: '2.5rem',
@@ -117,15 +117,9 @@ const Home = () => {
                   }
                 }}>{t('looking')}</Typography>
               :  <Typography variant='h1' sx={{
-                  textAlign:"center", color:"white", WebkitTextStroke: "1px black",
-                  fontSize: {
-                   xs: "3em",
-                   sm: "5em",
-                   md: "7em",
-                   lg: "10em", 
-                  }
-                }}>{t('looking')}</Typography>
-                }
+                  textAlign:"center", color:"white", WebkitTextStroke: "0.5px black",
+                  fontSize: '3em',
+                }}>{t('looking')}</Typography>}
                 
                 <SearchBar size="big"/>
               </Box>
