@@ -52,12 +52,7 @@ const Home = () => {
                 color:"white", 
                 WebkitTextStroke: "2px black",
                 padding: "0 1em",
-                fontSize: '4.5em', /* {
-                  xs: '2.5rem',
-                  sm: '3rem',
-                  md: '3.5rem',
-                  lg: '4.5rem',
-                }, */
+                fontSize: '4.5em', 
               }}>{t('home_desc1')}<a href='https://www.visualcrossing.com/' target='_blank'>Visual Crossing</a>. 
                {t('home_desc2')}<a href='https://www.theodinproject.com/' target='_blank'>The Odin Project</a> 
                {t('home_desc3')}</Typography>
@@ -72,12 +67,7 @@ const Home = () => {
                 color:"white", 
                 WebkitTextStroke: "0.5px black",
                 padding: "0 1em",
-                fontSize: '2.1em', /* {
-                  xs: '2.5rem',
-                  sm: '3rem',
-                  md: '3.5rem',
-                  lg: '4.5rem',
-                }, */
+                fontSize: '2.1em', 
               }}>{t('home_desc1')}<a href='https://www.visualcrossing.com/' target='_blank'>Visual Crossing</a>. 
                {t('home_desc2')}<a href='https://www.theodinproject.com/' target='_blank'>The Odin Project</a> 
                {t('home_desc3')}</Typography>
