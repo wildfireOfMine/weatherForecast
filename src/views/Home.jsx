@@ -72,7 +72,7 @@ const Home = () => {
                 color:"white", 
                 WebkitTextStroke: "0.5px black",
                 padding: "0 1em",
-                fontSize: '2.3em', /* {
+                fontSize: '2.1em', /* {
                   xs: '2.5rem',
                   sm: '3rem',
                   md: '3.5rem',
