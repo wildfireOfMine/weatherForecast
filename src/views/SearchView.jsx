@@ -47,7 +47,7 @@ const SearchView = () => {
                     }}>{t('looking_for_a_city')}</Typography>
                     :
                      <Typography variant="h2" sx={{
-                      WebkitTextStroke: "2px black",
+                      WebkitTextStroke: "0.5px black",
                       color: "white",
                     }}>{t('looking_for_a_city')}</Typography>
                 }
