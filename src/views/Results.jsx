@@ -198,8 +198,17 @@ const Results = () => {
                     WebkitTextStroke: "1px black",
                     maxWidth: '50%',
                     }}>
-                    <Typography variant='h2'>{data.resolvedAddress}</Typography>
-                    <Typography variant='h3'><q>{data.description}</q></Typography>
+                        {!medium ? 
+                        <>
+                            <Typography variant='h2'>{data.resolvedAddress}</Typography>
+                            <Typography variant='h3'><q>{data.description}</q></Typography>
+                        </> 
+                        :
+                        <>
+                            <Typography variant='h3' sx={{ textAlign: 'center',}}>{data.resolvedAddress}</Typography>
+                            <Typography variant='h4' sx={{ textAlign: 'center',}}><q>{data.description}</q></Typography>
+                        </>
+                    }
                 </Box>
 
                     <Box className='map' sx={{ position: 'relative', zIndex: 1000 }}>
@@ -333,7 +342,7 @@ const Results = () => {
                                 <li>{t('feels_like')}: {fahrenheitToCelsius(conditions.feelslike)} <Visibility sx={{ verticalAlign: 'middle' }}/> </li>
                                 <li>{t('humidity')}: {conditions.humidity}%  <Waves sx={{ verticalAlign: 'middle' }}/> </li>
                                 <li>{t('moonphase')}: {conditions.moonphase} <Brightness2 sx={{ verticalAlign: 'middle' }}/> </li>
-                                <li>{t('precip')}: {conditions.precip}mm <ScatterPlot sx={{ verticalAlign: 'middle' }}/> </li>
+                                <li>{t('precip')}: {conditions.precip == 0 ? <>0</> : conditions.precip}mm <ScatterPlot sx={{ verticalAlign: 'middle' }}/> </li>
                                 <li>{t('pressure')}: {conditions.pressure} mb <Water sx={{ verticalAlign: 'middle' }}/> </li>
                                 <li>{t('snow')}: {conditions.snow} cm <Snowing sx={{ verticalAlign: 'middle' }} /> </li>
                                 <li>{t('solar_energy')}: {conditions.solarenergy} kWh/m² <Brightness5 sx={{ verticalAlign: 'middle' }}/> </li>
